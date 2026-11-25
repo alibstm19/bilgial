@@ -121,7 +121,7 @@ adresinden DevTools açılabilir.
 Depo içinde, tüm zinciri ölçen komutlar:
 
 ```powershell
-node --test tests/                                          # 300 test
+node tools/test.js                                          # 300 test
 node tools/lint.js                                          # stil + sözleşme
 node tools/doctor.js                                        # ortam
 powershell -ExecutionPolicy Bypass -File tools/build.ps1    # dist\BilgiAl\BilgiAl.exe

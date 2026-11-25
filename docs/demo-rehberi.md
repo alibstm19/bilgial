@@ -100,7 +100,7 @@ Sonra öğretmen tarafında şunları dene:
 
 | Kapı | Komut | Sonuç |
 |---|---|---|
-| Testler | `node --test tests/` | 300 / 300 |
+| Testler | `node tools/test.js` | 300 / 300 |
 | Stil | `node tools/lint.js` | 0 hata, 0 uyarı |
 | Ortam | `node tools/doctor.js` | 0 hata, 0 uyarı |
 | Uçtan uca | `tools/package.ps1` | paket + deneme verisi + ses modeli |

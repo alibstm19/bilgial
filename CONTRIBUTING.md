@@ -12,7 +12,7 @@ sahadan gelen gerçek geri bildirim en değerli katkıdır.
 4. Kapıları yeşil bırakın:
 
    ```powershell
-   node --test tests/
+   node tools/test.js
    node tools/lint.js
    node tools/doctor.js
    ```

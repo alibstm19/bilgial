@@ -12,6 +12,7 @@ abonelik yok, veri dışarı çıkmaz.
 > Hazır Windows paketi: [Releases](https://github.com/alibstm19/bilgial/releases) → `BilgiAl-0.2.0-deneme.zip`.
 
 [![Lisans: MIT](https://img.shields.io/badge/lisans-MIT-2ea44f.svg)](LICENSE)
+[![quality gates](https://github.com/alibstm19/bilgial/actions/workflows/ci.yml/badge.svg)](https://github.com/alibstm19/bilgial/actions/workflows/ci.yml)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078d4.svg)](#gereksinimler)
 [![Electron](https://img.shields.io/badge/Electron-45.2.1-47848f.svg)](https://www.electronjs.org/)
 [![Testler](https://img.shields.io/badge/testler-300%2F300-2ea44f.svg)](#kalite-kapıları)
@@ -168,7 +169,7 @@ npm start
 Test ve kalite kapıları (depo kökünde):
 
 ```powershell
-node --test tests/
+node tools/test.js
 node tools/lint.js
 node tools/doctor.js
 ```
@@ -209,7 +210,7 @@ node tools/models-pull.js --tier=quality --yes   # kalite kademesi
 Bu depodaki son ölçüm (2026-11-25):
 
 ```
-node --test tests/    -> 300 test, 300 pass, 0 fail
+node tools/test.js    -> 300 test, 300 pass, 0 fail
 node tools/lint.js    -> 0 hata, 0 uyarı  (6 CSS · 2 HTML · 65 JS)
 node tools/doctor.js  -> 0 hata, 0 uyarı
 ```
@@ -258,7 +259,7 @@ yaradığını sahadan öğrenmek istiyoruz.
 Katkılar açıktır. Küçük ve ölçülebilir değişiklikler tercih edilir:
 
 1. Depoyu çatalla, anlamlı bir dal aç.
-2. `node --test tests/`, `node tools/lint.js`, `node tools/doctor.js` yeşil olsun.
+2. `node tools/test.js`, `node tools/lint.js`, `node tools/doctor.js` yeşil olsun.
 3. Yeni davranış için test ekle; kullanıcıya görünen metin Türkçe, kod/dosya/commit İngilizce.
 4. Pull request açıklamasında **ölçüm** ver (komut + çıktı ya da ekran görüntüsü).
 

@@ -7,7 +7,7 @@
 <!-- Zorunlu: komut + çıktı ya da önce/sonra ekran görüntüsü. "Bence çalışıyor" kanıt değildir. -->
 
 ```
-node --test tests/      ->
+node tools/test.js      ->
 node tools/lint.js      ->
 node tools/doctor.js    ->
 ```
