@@ -6,7 +6,7 @@ sahadan gelen gerçek geri bildirim en değerli katkıdır.
 ## Nasıl katkı verilir
 
 1. **Önce konuşun.** Büyük bir değişiklik (yeni ekran, yeni kanal, yeni bağımlılık) için
-   [Issue](../../issues) açın. Küçük düzeltmeler doğrudan pull request olabilir.
+   [Issue](https://github.com/alibstm19/bilgial/issues) açın. Küçük düzeltmeler doğrudan pull request olabilir.
 2. Depoyu çatallayın, `main` üzerinden anlamlı bir dal açın (`fix/odev-tarihi`, `feat/…`).
 3. Değişikliği **ölçülebilir** tutun: tek bir davranış, tek bir test.
 4. Kapıları yeşil bırakın:
@@ -47,7 +47,7 @@ docs(readme): explain local model tiers
 
 ## Hata bildirimi
 
-[Issue](../../issues) açarken şunları ekleyin:
+[Issue](https://github.com/alibstm19/bilgial/issues) açarken şunları ekleyin:
 
 - Windows sürümü, Node sürümü, Ollama sürümü
 - Uygulamayı nasıl çalıştırdığınız (paket ZIP mi, kaynak mı)

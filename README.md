@@ -9,7 +9,7 @@ abonelik yok, veri dışarı çıkmaz.
 
 > **Durum:** `v0.2.0-deneme` — çalışan bir demo ve geliştirilmeye açık bir fikir.
 > Kaynak kod açıktır, geri bildirim ve katkı beklenir.
-> Hazır Windows paketi: [Releases](../../releases) → `BilgiAl-0.2.0-deneme.zip`.
+> Hazır Windows paketi: [Releases](https://github.com/alibstm19/bilgial/releases) → `BilgiAl-0.2.0-deneme.zip`.
 
 [![Lisans: MIT](https://img.shields.io/badge/lisans-MIT-2ea44f.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078d4.svg)](#gereksinimler)
@@ -133,7 +133,7 @@ okullarda pilot yapmak isteyen eğitim teknolojisi ekipleri.
 - **Şema kapıları:** her yazma öncesi `schema.validate*`; bozuk belge diske yazılmaz.
 
 Ayrıntı: [`docs/ai-mimari.md`](docs/ai-mimari.md) · [`docs/contract-v0.md`](docs/contract-v0.md) ·
-[`docs/tasarim-dili.md`](docs/tasarim-dili.md)
+[`docs/tasarim-dili.md`](docs/tasarim-dili.md) · 15 dakikalık tur: [`docs/demo-rehberi.md`](docs/demo-rehberi.md)
 
 ---
 
@@ -141,7 +141,7 @@ Ayrıntı: [`docs/ai-mimari.md`](docs/ai-mimari.md) · [`docs/contract-v0.md`](d
 
 ### A) Hazır Windows demosu (önerilen)
 
-1. [Releases](../../releases) sayfasından `BilgiAl-0.2.0-deneme.zip` dosyasını indir.
+1. [Releases](https://github.com/alibstm19/bilgial/releases) sayfasından `BilgiAl-0.2.0-deneme.zip` dosyasını indir.
 2. ZIP'i bir klasöre çıkar, `Baslat-Deneme.cmd` dosyasına çift tıkla.
 3. Deneme hesaplarıyla gir:
 
@@ -210,7 +210,7 @@ Bu depodaki son ölçüm (2026-11-25):
 
 ```
 node --test tests/    -> 300 test, 300 pass, 0 fail
-node tools/lint.js    -> 0 hata, 0 uyarı  (6 CSS · 2 HTML · 64 JS)
+node tools/lint.js    -> 0 hata, 0 uyarı  (6 CSS · 2 HTML · 65 JS)
 node tools/doctor.js  -> 0 hata, 0 uyarı
 ```
 
@@ -219,8 +219,8 @@ node tools/doctor.js  -> 0 hata, 0 uyarı
 - **Sözleşme testi:** kanal sayısı ve listesi `docs/contract-v0.md` §5 + §7.2 ile birebir.
 - **Saha ölçümleri:** her özellik gerçek Electron + CDP ve gerçek telefon köprüsüyle ölçülür;
   taşma 0, konsol hatası 0 kabul eşiğidir.
-- **Uçtan uca deneme:** `tools/trial-check.ps1` kapıları, paketi, gerçek üretimi ve telefondan
-  oynatmayı tek komutta doğrular.
+- **Uçtan uca deneme:** `tools/trial.ps1` gerçek veriyle uygulamayı açar; `tools/package.ps1`
+  aynı veriyi ve Türkçe ses modelini taşınabilir ZIP'e paketler.
 
 ---
 
@@ -248,7 +248,7 @@ node tools/doctor.js  -> 0 hata, 0 uyarı
 - [ ] LTI / Google Classroom köprüsü
 - [ ] Erişilebilirlik: ekran okuyucu ve klavye ile tam gezinme
 
-Fikirlerinizi [Issues](../../issues) altında açabilirsiniz. Hangi özelliğin gerçekten işe
+Fikirlerinizi [Issues](https://github.com/alibstm19/bilgial/issues) altında açabilirsiniz. Hangi özelliğin gerçekten işe
 yaradığını sahadan öğrenmek istiyoruz.
 
 ---

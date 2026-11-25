@@ -25,13 +25,17 @@ New-Item -ItemType Directory -Path $Stage -Force | Out-Null
 
 Write-Host "== Kopyalanıyor =="
 Copy-Item -Path (Join-Path $Dist '*') -Destination $Stage -Recurse -Force
-Copy-Item -Path (Join-Path $Root 'work\pkg-staging\Baslat-Deneme.cmd') -Destination $Stage -Force
-Copy-Item -Path (Join-Path $Root 'work\pkg-staging\OKU-BENI.txt') -Destination $Stage -Force
+$staging = Join-Path $Root 'demo\pkg-staging'
+if (-not (Test-Path $staging)) { $staging = Join-Path $Root 'work\pkg-staging' }
+Copy-Item -Path (Join-Path $staging 'Baslat-Deneme.cmd') -Destination $Stage -Force
+Copy-Item -Path (Join-Path $staging 'OKU-BENI.txt') -Destination $Stage -Force
 Copy-Item -Path (Join-Path $Root 'docs\kurulum-ve-test.md') -Destination (Join-Path $Stage 'KURULUM-VE-TEST.md') -Force
 
 # Deneme profili: temiz tohum -> deneme\data + media + models (Baslat-Deneme.cmd bu klasoru acar).
 Write-Host "== Deneme profili tohumlanıyor =="
-& node (Join-Path $Root 'work\trial-seed.js') | Out-Host
+$seedScript = Join-Path $Root 'demo\trial-seed.js'
+if (-not (Test-Path $seedScript)) { $seedScript = Join-Path $Root 'work\trial-seed.js' }
+& node $seedScript | Out-Host
 if ($LASTEXITCODE -ne 0) { throw 'trial-seed.js basarisiz' }
 $Trial = Join-Path $Root 'work\trial-data'
 $TrialStage = Join-Path $Stage 'deneme'

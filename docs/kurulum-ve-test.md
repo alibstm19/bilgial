@@ -116,19 +116,20 @@ Hata görürsen: ekran görüntüsü + saat + hangi adım olduğunu not et. Kons
 uygulamayı `BilgiAl.exe --remote-debugging-port=9783` ile açıp `http://127.0.0.1:9783`
 adresinden DevTools açılabilir.
 
-## 7. Geliştirici doğrulaması (tek komut)
+## 7. Geliştirici doğrulaması
 
-Depo içinde, tüm zinciri ölçen komut:
+Depo içinde, tüm zinciri ölçen komutlar:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/trial-check.ps1
-powershell -ExecutionPolicy Bypass -File tools/trial-check.ps1 -SkipBuild   # dist hazır
-powershell -ExecutionPolicy Bypass -File tools/trial-check.ps1 -Quick       # yalnız kapılar
+node --test tests/                                          # 300 test
+node tools/lint.js                                          # stil + sözleşme
+node tools/doctor.js                                        # ortam
+powershell -ExecutionPolicy Bypass -File tools/build.ps1    # dist\BilgiAl\BilgiAl.exe
+powershell -ExecutionPolicy Bypass -File tools/package.ps1  # taşınabilir ZIP + SHA256
 ```
 
-24 adım ölçülür: `testler → lint → doctor → paket → tohum → açılış → üretim → telefon →
-kurulum → rehber → sinif → rapor → donut → digest → baglantilar → indirme → saha → ozet → arama → yaklasan → arsiv → filtre → mobilfiltre → video`;
-tek karar yazar (`GECTI`/`KALDI`). Ayrıntı: `docs/deneme-surumu.md`.
+`tools/trial.ps1` paketli uygulamayı deneme verisiyle açar (`-Port`, `-Dev`, `-Seed`).
+Ayrıntılı saha ölçümleri: `docs/deneme-surumu.md`.
 
 ## 8. Geri alma / sıfırlama
 

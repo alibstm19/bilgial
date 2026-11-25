@@ -1,0 +1,96 @@
+BilgiAl — Deneme Sürümü (v0.2.0)
+===============================
+
+Bu klasör taşınabilir bir Windows uygulamasıdır. Kurulum gerektirmez:
+klasörü istediğin yere kopyala, "Baslat-Deneme.cmd" dosyasına çift tıkla.
+
+1) ÇALIŞTIRMA
+-------------
+  Baslat-Deneme.cmd      -> deneme verisiyle açar (önerilen)
+  BilgiAl.exe            -> normal mod (kendi veri klasörünü kullanır)
+
+Windows "Bilinmeyen yayıncı" uyarısı gösterirse: "Daha fazla bilgi" -> "Yine de çalıştır".
+Kod imzası yoktur; uygulama yereldir, internete veri göndermez.
+
+2) GİRİŞ BİLGİLERİ (deneme verisi)
+----------------------------------
+  Öğrenci : ogrenci@bilgial.local  / BilgiAl2026
+  Öğretmen: ogretmen@bilgial.local / BilgiAl2026
+  Yönetici: admin@bilgial.local    / BilgiAl2026
+
+3) NE GEREKLİ
+-------------
+  - Ollama çalışıyor olmalı (http://127.0.0.1:11434).
+    Modeller: qwen3:14b (metin), minicpm-v:8b (görsel), tr_TR-dfki-medium (ses, pakette gelir).
+  - Ses için Python "piper-tts" paketi kurulu olmalı:
+        python -m pip install piper-tts
+    Kurulu değilse video yerine sessiz slayt üretilir (iş "partial" olur, hata değil).
+  - Video birleştirme için ffmpeg (isteğe bağlı; yoksa slayt videosu üretilir).
+
+4) DENEME AKIŞI (5 dakika)
+--------------------------
+  a) Öğrenci hesabıyla gir.
+  b) "Çöz" sekmesinde gerçek bir soru fotoğrafı yükle (ekran görüntüsü değil, net bir sayfa).
+  c) Öğretmen seç, fiyatı gör, "Çözümü üret"e bas.
+  d) Aşamalar canlı ilerler: oku -> anla -> planla -> seslendir -> birleştir.
+  e) Bitince "Bitti" rozetine bas: ders videosu uygulamada oynar.
+  f) Kitaplık sekmesinde kayıt kalır; oradan tekrar izleyebilirsin.
+
+5) SINIF VE ÖDEV (yeni)
+-----------------------
+  a) Öğretmen hesabıyla "Sınıflar" ekranını aç, sınıf oluştur.
+     Ekranda 6 karakterlik katılım kodu görünür; "Kopyala" ile al.
+  b) Aynı ekrandan ödev ver: başlık, not ve teslim tarihi.
+  c) Öğrenci hesabıyla "Ödevlerim" ekranını aç, kodu gir ve sınıfa katıl.
+  d) Ödev listede görünür; "Tamamla" deyince öğretmen tarafında tamamlanma yükselir.
+  e) Öğretmen "Detay" ile öğrenci bazında ilerlemeyi görür.
+  f) "Sınıf içgörüleri" kartı haftalık ritmi ve riskli öğrencileri gösterir;
+     "CSV indir" ile öğrenci ilerlemesini tabloya aktarabilirsin.
+  g) Öğrenci tarafında "Bugünün hedefi" kartı otomatik hesaplanır.
+  h) Öğretmen "Dönüt" ile öğrenciye not yazabilir; "Hatırlat" ile gecikmiş ödevlere
+     kopyalanabilir mesaj gönderebilir; öğrenci dönütü "Ödevlerim" ekranında görünür.
+  i) "Özet metni" düğmesi son 7 günün haftalık özetini kopyalanabilir metin olarak verir
+     (e-posta ve katılım kodu içermez); öğrenci kendi özetini "Haftalık özetim" kartında görür.
+  j) Sınıf detayında "Öğrenci ara" alanı Türkçe harf duyarsız süzer; eşleşme yoksa
+     "ile eşleşen öğrenci yok." yazar. Üye satırındaki "Özet" tek öğrencinin özetini açar.
+  k) Ödevlerim'de teslimi 48 saat içinde olan ödevler "Yaklaşan teslimler" kartında
+     "Bugün 18:00" / "Yarın 09:00" / "Son 1 saat" etiketiyle görünür; telefonda aynı kart
+     ve ödev satırında kalan süre rozeti vardır. İlk açılışta tek yerel bildirim çıkar
+     (en fazla 6 saatte bir).
+  l) Ödevler sekmesinde her ödev satırında "Arşivle" vardır; arşivlenen ödev listeden çıkar,
+     öğrencide ve özetlerde görünmez. Açılan "Arşiv" kartında "Geri al" ödevi yerine koyar.
+  m) Ödev tablosunun üstünde "Ödev ara", durum süzgeci ve sıralama vardır. Arama Türkçe harf
+     duyarsızdır ("vektor" → "Vektörler"); eşleşme yoksa "Eşleşen ödev yok" yazar. Sıralamada
+     teslim tarihi olmayan ödevler en sonda durur.
+  n) "Video stüdyosu" kartından videoyu ayarla: 6 tema, 16:9 / 9:16 / 1:1 oran, giriş-kapanış
+     kartı, altyazı (SRT + VTT), kapak görseli ve resim-içinde-resim. Oynatıcıda oran seçilir,
+     altyazı izi ve kapak görünür. Altyazı dosyaları telefon kitaplığından da açılır.
+
+6) TELEFONDAN KULLANMA (aynı Wi-Fi)
+-----------------------------------
+  a) Masaüstünde "Telefon köprüsü" kartını aç, QR kodu göster.
+  b) Telefonla QR'ı okut (ya da adresi yaz): http://<PC-IP>:4780/?pair=<6 hane>
+  c) Telefonda "Ana ekrana ekle" ile uygulama gibi kurulabilir.
+  d) Wi-Fi kopsa da arayüz açılır; PC dönünce veriler gelir.
+  e) Öğrenci hesabıyla telefonda "Ödevlerim" sekmesi: günlük hedef, bekleyen/tamamlanan
+     sayıları, ödev listesi ve öğretmen dönütü görünür; "Tamamla" deyince PC'de de işaretlenir.
+     Sınıfa katılma masaüstünden yapılır (telefonda katılma yoktur).
+  f) Haftalık özet: öğretmen Sınıflar ekranında "Özet metni", öğrenci Ödevlerim ekranında
+     "Haftalık özetim" kartını görür. "Kopyala" metni panoya alır; metinde e-posta ve
+     katılım kodu yoktur.
+
+7) DENEMEDE OLMAYANLAR (bilinçli)
+---------------------------------
+  - Gerçek ödeme yok; kredi satın alma simülasyondur (paymentMode: simulated).
+  - Bulut kapalı; her şey yerelde çalışır.
+  - Ses klonlama (XTTS) ve avatar/lip-sync yazılı rıza (consent.json) olmadan açılmaz.
+
+8) SORUN GİDERME
+----------------
+  - "PC'ye ulaşılamıyor": Ollama kapalı olabilir -> "ollama serve".
+  - Video oynamıyor: ses modeli yok -> pip install piper-tts, sonra tekrar dene.
+  - Veriyi sıfırlamak için: deneme\ klasörünü sil, yedekten geri kopyala.
+  - Uygulama açılmıyorsa: BilgiAl.exe'yi yönetici olarak çalıştır.
+  - Ayrıntılı adım adım test: KURULUM-VE-TEST.md
+
+Sürüm: v0.2.0 · 2026-11-18 · Yerel, tek makine, internet gerekmez (LAN hariç).

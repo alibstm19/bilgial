@@ -16,6 +16,9 @@ models/
 *.pdf
 *.log
 
+# the tiny sample lesson used to seed the demo profile is versioned
+!demo/seed-media/*.mp4
+
 # release artifacts (published through GitHub Releases, not git)
 *.zip
 

@@ -18,10 +18,12 @@ $Root = Split-Path -Parent $PSScriptRoot
 Set-Location $Root
 
 $dataDir = Join-Path $Root 'work\trial-data'
+$seedScript = Join-Path $Root 'demo\trial-seed.js'
+if (-not (Test-Path $seedScript)) { $seedScript = Join-Path $Root 'work\trial-seed.js' }
 
 if ($Seed -or -not (Test-Path (Join-Path $dataDir 'data\users.json'))) {
     Write-Output 'Deneme verisi kuruluyor...'
-    & node (Join-Path $Root 'work\trial-seed.js')
+    & node $seedScript
     if ($LASTEXITCODE -ne 0) { throw 'Deneme tohumu basarisiz' }
 }
 

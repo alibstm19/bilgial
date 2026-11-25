@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Teşekkürler! Lütfen güvenlik açıkları için **herkese açık issue açmayın**;
-        [SECURITY.md](../blob/main/SECURITY.md) yolunu izleyin.
+        [SECURITY.md](https://github.com/alibstm19/bilgial/blob/main/SECURITY.md) yolunu izleyin.
   - type: textarea
     id: what
     attributes:
