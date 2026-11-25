@@ -15,9 +15,9 @@ jobs:
     runs-on: windows-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
 
@@ -26,7 +26,7 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: contract + unit + UI tests
-        run: node --test tests/
+        run: node tools/test.js
 
       - name: style and contract lint
         run: node tools/lint.js
