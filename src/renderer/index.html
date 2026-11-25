@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self' data: blob: bilgial-media:; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>BilgiAl</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/shell.css">
+  <link rel="stylesheet" href="styles/screens.css">
+</head>
+<body data-theme="dark" data-role="student" data-view="auth">
+
+  <a class="visually-hidden" href="#main-content">İçeriğe geç</a>
+
+  <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24"><circle cx="8" cy="8" r="5"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="M16.71 13.88l.7.71-2.82 2.82"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 19v3"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/><path d="M16 13h5v4h-5a2 2 0 0 1 0-4z"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v12"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h8"/><path d="M8 17h5"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><polygon points="16 10 22 7 22 17 16 14"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10"/><path d="M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><polyline points="9 3 3 3 3 9"/><polyline points="15 21 21 21 21 15"/><path d="M3 3l6 6M21 21l-6-6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.3 22 9.3 17 14.2 18.2 21 12 17.8 5.8 21 7 14.2 2 9.3 8.9 8.3 12 2"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><polyline points="13 6 19 12 13 18"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="i-hard-drive" viewBox="0 0 24 24"><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M4.5 14 8 5h8l3.5 9"/><path d="M6 18h.01M10 18h.01"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 24 24"><path d="M12 1.9 21.2 7v10L12 22.1 2.8 17V7z"/><path d="M7.4 15.6v-3.2M12 15.6V8.4M16.6 15.6v-5"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+
+    <aside class="sidebar" aria-label="Kenar çubuğu">
+      <div class="side-head">
+        <span class="rail-brand" aria-hidden="true"><svg class="icon"><use href="#i-logo"></use></svg></span>
+        <span class="side-head-text">
+          <span class="side-head-title">BilgiAl</span>
+          <span class="side-head-sub">öğrenme stüdyosu</span>
+        </span>
+        <span class="pill" data-tone="info">v2</span>
+      </div>
+
+      <nav class="side-nav" aria-label="Ana menü">
+        <div class="side-nav-group" data-role-group="student" data-roles="student">
+          <p class="side-nav-label">Öğrenci</p>
+          <button class="side-nav-item" type="button" data-nav="workspace" data-roles="student" aria-current="page">
+            <svg class="icon" aria-hidden="true"><use href="#i-grid"></use></svg>
+            <span>Çalışma Alanı</span>
+            <span class="pill" data-tone="info">3</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="tasks" data-roles="student">
+            <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+            <span>Ödevlerim</span>
+            <span class="pill" data-tone="warning" id="nav-tasks-count">0</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="library" data-roles="student">
+            <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg>
+            <span>Kütüphane</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="credits" data-roles="student">
+            <svg class="icon" aria-hidden="true"><use href="#i-coins"></use></svg>
+            <span>Credits</span>
+            <span class="pill" data-tone="muted">1.240 cr</span>
+          </button>
+        </div>
+
+        <div class="side-nav-group" data-role-group="teacher" data-roles="teacher">
+          <p class="side-nav-label">Öğretmen</p>
+          <button class="side-nav-item" type="button" data-nav="studio" data-roles="teacher">
+            <svg class="icon" aria-hidden="true"><use href="#i-mic"></use></svg>
+            <span>Stüdyo</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="classes" data-roles="teacher">
+            <svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg>
+            <span>Sınıflar</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="earnings" data-roles="teacher">
+            <svg class="icon" aria-hidden="true"><use href="#i-trend"></use></svg>
+            <span>Kazanç</span>
+          </button>
+        </div>
+
+        <div class="side-nav-group" data-role-group="admin" data-roles="admin">
+          <p class="side-nav-label">Yönetici</p>
+          <button class="side-nav-item" type="button" data-nav="approval" data-roles="admin">
+            <svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg>
+            <span>Onay Kuyruğu</span>
+            <span class="pill" data-tone="warning">2</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="economy" data-roles="admin">
+            <svg class="icon" aria-hidden="true"><use href="#i-wallet"></use></svg>
+            <span>Ekonomi</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="admin" data-roles="admin">
+            <svg class="icon" aria-hidden="true"><use href="#i-settings"></use></svg>
+            <span>Yönetim</span>
+            <span class="pill" data-tone="info" id="nav-admin-state">sistem</span>
+          </button>
+        </div>
+
+        <div class="side-nav-group" data-role-group="common" data-roles="student teacher admin">
+          <p class="side-nav-label">Genel</p>
+          <button class="side-nav-item" type="button" data-nav="ai" data-roles="student teacher admin">
+            <svg class="icon" aria-hidden="true"><use href="#i-cpu"></use></svg>
+            <span>AI Merkezi</span>
+            <span class="pill" data-tone="success" id="nav-ai-state">yerel</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="settings" data-roles="student teacher admin">
+            <svg class="icon" aria-hidden="true"><use href="#i-settings"></use></svg>
+            <span>Ayarlar</span>
+          </button>
+          <button class="side-nav-item" type="button" data-nav="auth" data-roles="student teacher admin">
+            <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
+            <span>Giriş / Rol</span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="side-foot">
+        <div class="side-user">
+          <span class="avatar" aria-hidden="true">EY</span>
+          <span class="side-user-text">
+            <span class="side-user-name">Elif Yılmaz</span>
+            <span class="side-user-role">Öğrenci · 11. sınıf</span>
+          </span>
+          <button class="btn btn-icon btn-sm" id="btn-logout" type="button" aria-label="Hesaptan çıkış yap" title="Çıkış yap">
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </button>
+        </div>
+        <p class="card-sub">BilgiAl v0.2.0 · yerel önizleme</p>
+      </div>
+    </aside>
+
+    <main class="main" id="main-content" tabindex="-1">
+      <header class="topbar">
+        <button class="topbar-search" id="palette-trigger" type="button" data-open-palette aria-label="Komut paletini aç">
+          <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+          <span class="topbar-search-text">Komut ara veya ekran aç…</span>
+          <kbd class="kbd">Ctrl K</kbd>
+        </button>
+
+        <div class="toolbar">
+          <span class="pill" data-tone="success">Yerel AI · hazır</span>
+          <span class="card-sub">Senkron 12:04</span>
+          <label class="field" for="role-switch">
+            <span class="visually-hidden">Demo rolü</span>
+            <select class="select" id="role-switch" aria-label="Demo için rol değiştir">
+              <option value="student" selected>Öğrenci</option>
+              <option value="teacher">Öğretmen</option>
+              <option value="admin">Yönetici</option>
+            </select>
+          </label>
+          <button class="btn btn-icon" id="theme-toggle" type="button" aria-label="Temayı değiştir" aria-pressed="false">
+            <svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>
+          </button>
+          <span class="avatar" aria-hidden="true">EY</span>
+        </div>
+      </header>
+
+      <div class="content" id="content">
+
+        <!-- 1 · Giriş / Rol -->
+        <section class="screen" id="screen-auth" data-screen="auth" data-testid="screen-auth" aria-labelledby="auth-title">
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Yerel hesap · sunucusuz</p>
+              <h1 class="screen-title" id="auth-title">BilgiAl</h1>
+              <p class="screen-sub">Anlamadığın yerde, anladığın dilde çözüm. Sayfanı yükle, anlatımını sevdiğin hocayı seç; çözüm senin sorunun üzerinden üretilsin.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="success">Veri bu makinede kalır</span>
+            </div>
+          </header>
+
+          <div class="split">
+            <div class="stack">
+              <div class="card" data-testid="auth-pitch">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title">Öğretmenin tarzı, senin sayfan</h2>
+                    <p class="card-sub">Hız, vurgu ve pedagojik sıra korunur; her harcamanın %30'u öğretmene yazılır.</p>
+                  </div>
+                  <span class="pill" data-tone="info">3 rol · tek makine</span>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <span class="avatar" aria-hidden="true">1</span>
+                    <div class="stack">
+                      <strong>Sayfayı yükle</strong>
+                      <span class="card-sub">Fotoğraf ya da PDF; içerik cihazdan çıkmaz.</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <span class="avatar" aria-hidden="true">2</span>
+                    <div class="stack">
+                      <strong>Hocayı seç</strong>
+                      <span class="card-sub">Doğrulanmış profiller arasından anlatım tarzını seç.</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <span class="avatar" aria-hidden="true">3</span>
+                    <div class="stack">
+                      <strong>Çözümü izle</strong>
+                      <span class="card-sub">Slayt + seslendirme; kütüphanede tekrar açılır.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-foot">
+                  <span class="pill" data-tone="muted">0 bulut zorunluluğu</span>
+                  <span class="pill" data-tone="muted">%30 öğretmen payı</span>
+                </div>
+              </div>
+
+              <div class="grid-3">
+                <div class="kpi" data-testid="auth-stat-roles">
+                  <p class="kpi-label">Rol</p>
+                  <p class="kpi-value">3</p>
+                  <p class="kpi-delta">tek makinede</p>
+                </div>
+                <div class="kpi" data-testid="auth-stat-share">
+                  <p class="kpi-label">Öğretmen payı</p>
+                  <p class="kpi-value">%30</p>
+                  <p class="kpi-delta" data-tone="success">anında yazılır</p>
+                </div>
+                <div class="kpi" data-testid="auth-stat-cloud">
+                  <p class="kpi-label">Bulut</p>
+                  <p class="kpi-value">0</p>
+                  <p class="kpi-delta" data-tone="info">varsayılan kapalı</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" data-testid="auth-card">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title">Tekrar hoş geldin</h2>
+                  <p class="card-sub">Cihazındaki hesabınla devam et. Sunucu yok, bekleme yok.</p>
+                </div>
+                <span class="pill" data-tone="muted">v0.2</span>
+              </div>
+              <form class="card-body" id="auth-form" novalidate>
+                <label class="field" for="auth-email">
+                  <span class="card-sub">E-posta</span>
+                  <input class="input" id="auth-email" name="email" type="email" autocomplete="username" placeholder="elif@ornek.com" aria-label="E-posta" required>
+                </label>
+                <label class="field" for="auth-pass">
+                  <span class="card-sub">Parola</span>
+                  <span class="input-group">
+                    <input class="input" id="auth-pass" name="password" type="password" autocomplete="current-password" placeholder="••••••••" aria-label="Parola" required>
+                    <button class="btn btn-icon btn-sm input-group__btn" id="btn-toggle-pass" type="button" aria-label="Parolayı göster" aria-pressed="false" title="Parolayı göster">
+                      <svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>
+                    </button>
+                  </span>
+                </label>
+                <label class="field" for="auth-role">
+                  <span class="card-sub">Rol</span>
+                  <select class="select" id="auth-role" name="role">
+                    <option value="student" selected>Öğrenci — soru çöz, öğren</option>
+                    <option value="teacher">Öğretmen — anlatımını ölçekle</option>
+                    <option value="admin">Yönetici — doğrula ve izle</option>
+                  </select>
+                  <span class="field-hint" id="auth-role-hint">Demo rolünü üst çubuktan her an değiştirebilirsin.</span>
+                </label>
+                <label class="checkbox-row">
+                  <input class="checkbox" type="checkbox" aria-label="Bu cihazda oturumu açık tut" checked>
+                  <span class="card-sub">Bu cihazda oturumu açık tut</span>
+                </label>
+                <div class="stack">
+                  <button class="btn btn-primary btn-block" id="btn-login" type="submit">
+                    <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+                    Giriş yap
+                  </button>
+                  <button class="btn btn-ghost btn-block" id="btn-register" type="button">Yeni hesap oluştur</button>
+                </div>
+                <p class="field-hint">Parola scrypt ile yerelde saklanır; dışarı gönderilmez.</p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2 · Öğrenci: Çalışma Alanı -->
+        <section class="screen" id="screen-workspace" data-screen="workspace" data-testid="screen-workspace" aria-labelledby="workspace-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Öğrenci · çalışma alanı</p>
+              <h1 class="screen-title" id="workspace-title">Bugün neyi çözüyoruz?</h1>
+              <p class="screen-sub">Sayfanı yükle, anlatımını sevdiğin hocayı seç. Maliyeti görmeden hiçbir şey harcanmaz.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="success"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> Yerel AI</span>
+              <button class="btn btn-primary" type="button" data-open-palette>
+                <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                Yeni çözüm
+              </button>
+            </div>
+          </header>
+
+          <div class="kpi-row">
+            <article class="kpi" data-testid="kpi-balance">
+              <p class="kpi-label">Kalan kredi</p>
+              <p class="kpi-value" id="kpi-balance-value">—</p>
+              <p class="kpi-delta" data-tone="info" id="kpi-balance-sub">yükleniyor…</p>
+            </article>
+            <article class="kpi" data-testid="kpi-active-job">
+              <p class="kpi-label">Aktif üretim</p>
+              <p class="kpi-value" id="kpi-active-value">0</p>
+              <p class="kpi-delta" data-tone="warning" id="kpi-active-sub">beklemede</p>
+            </article>
+            <article class="kpi" data-testid="kpi-month-solutions">
+              <p class="kpi-label">Bu ay çözüm</p>
+              <p class="kpi-value" id="kpi-month-value">0</p>
+              <p class="kpi-delta" data-tone="success" id="kpi-month-sub">bu ay</p>
+            </article>
+            <article class="kpi" data-testid="kpi-avg-time">
+              <p class="kpi-label">Ortalama üretim</p>
+              <p class="kpi-value" id="kpi-avg-value">—</p>
+              <p class="kpi-delta" id="kpi-avg-sub">son 20 iş</p>
+            </article>
+          </div>
+
+          <div class="split">
+            <div class="stack">
+              <section class="card" data-testid="workspace-upload" aria-labelledby="workspace-upload-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="workspace-upload-title">1 · Sayfanı yükle</h2>
+                    <p class="card-sub">Sorunun fotoğrafı ya da PDF sayfası yeterli.</p>
+                  </div>
+                  <span class="pill" data-tone="muted">en fazla 10 sayfa</span>
+                </div>
+                <div class="card-body">
+                  <label class="dropzone" id="upload-zone" for="file-input">
+                    <svg class="icon" aria-hidden="true"><use href="#i-upload"></use></svg>
+                    <span class="card-title">Dosyaları buraya bırak</span>
+                    <span class="dropzone-hint">veya tıklayıp seç · PNG, JPG, PDF · sayfa başına 50 MB</span>
+                    <span class="btn btn-ghost btn-sm">Dosya seç</span>
+                    <input class="visually-hidden" id="file-input" type="file" accept="image/png,image/jpeg,application/pdf" multiple aria-label="Sayfa dosyası seç">
+                  </label>
+
+                  <div class="row-between">
+                    <h3 class="card-title">Yüklenen sayfalar</h3>
+                    <span class="card-sub">2 sayfa · 3,9 MB</span>
+                  </div>
+
+                  <div class="file-list" id="page-list" aria-label="Yüklenen sayfalar">
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true">1</span>
+                      <span>fizik-sayfa-14.jpg</span>
+                      <span class="card-sub">1,8 MB · 1600 × 2200</span>
+                      <span class="pill" data-tone="success">hazır</span>
+                      <button class="btn btn-icon btn-sm" type="button" aria-label="fizik-sayfa-14.jpg dosyasını kaldır"><svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg></button>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true">2</span>
+                      <span>fizik-sayfa-15.jpg</span>
+                      <span class="card-sub">2,1 MB · 1600 × 2200</span>
+                      <span class="pill" data-tone="success">hazır</span>
+                      <button class="btn btn-icon btn-sm" type="button" aria-label="fizik-sayfa-15.jpg dosyasını kaldır"><svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg></button>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-plus"></use></svg></span>
+                      <span>Bir sayfa daha ekle</span>
+                      <span class="card-sub">PDF sayfaları otomatik ayrıştırılır</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="card" data-testid="workspace-progress" aria-labelledby="workspace-progress-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="workspace-progress-title">2 · Üretim durumu</h2>
+                    <p class="card-sub">Vektörlerde bileşke kuvvet · Dr. Selin Aksoy</p>
+                  </div>
+                  <span class="pill" data-tone="warning">devam ediyor</span>
+                </div>
+                <div class="card-body">
+                  <div class="progress-label">
+                    <span>Genel ilerleme</span>
+                    <strong>%46</strong>
+                  </div>
+                  <progress class="progress" id="job-progress" max="100" value="46" aria-label="Üretim genel ilerlemesi">%46</progress>
+
+                  <ol class="timeline" aria-label="Üretim aşamaları">
+                    <li class="timeline-step" data-state="done">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                      <div><p class="card-title">Sayfa alındı</p><p class="card-sub">2 görsel normalize edildi</p></div>
+                      <span class="pill" data-tone="success">bitti</span>
+                    </li>
+                    <li class="timeline-step" data-state="done">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                      <div><p class="card-title">Analiz</p><p class="card-sub">Fizik · 5 soru · orta karmaşıklık</p></div>
+                      <span class="pill" data-tone="success">bitti</span>
+                    </li>
+                    <li class="timeline-step" data-state="active">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg></span>
+                      <div><p class="card-title">Ders planı</p><p class="card-sub">Anlatım tarzı uygulanıyor · 3/7 sahne</p></div>
+                      <span class="pill" data-tone="info">çalışıyor</span>
+                    </li>
+                    <li class="timeline-step">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-mic"></use></svg></span>
+                      <div><p class="card-title">Seslendirme</p><p class="card-sub">TTS modeli bekleniyor</p></div>
+                      <span class="pill" data-tone="muted">model gerekli</span>
+                    </li>
+                    <li class="timeline-step">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-video"></use></svg></span>
+                      <div><p class="card-title">Video birleştirme</p><p class="card-sub">Slayt + metin ile teslim edilecek</p></div>
+                      <span class="pill" data-tone="muted">sırada</span>
+                    </li>
+                    <li class="timeline-step">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg></span>
+                      <div><p class="card-title">Kütüphaneye teslim</p><p class="card-sub">İzlemeye hazır hale gelir</p></div>
+                      <span class="pill" data-tone="muted">sırada</span>
+                    </li>
+                  </ol>
+
+                  <p class="field-hint"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg> Ses modeli kurulu değil: iş kısmi teslim edilir, analiz ve plan hazır kalır.</p>
+                </div>
+              </section>
+            </div>
+
+            <div class="stack">
+              <section class="card" data-testid="workspace-teachers" aria-labelledby="workspace-teachers-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="workspace-teachers-title">3 · Anlatım tarzını seç</h2>
+                    <p class="card-sub">Çözüm, seçtiğin hocanın pedagojik sırasıyla üretilir.</p>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <fieldset class="stack" id="teacher-picker">
+                    <legend class="visually-hidden">Öğretmen seç</legend>
+                    <label class="checkbox-row">
+                      <input class="checkbox" type="radio" name="teacher" value="selin" checked>
+                      <span class="avatar" aria-hidden="true">SA</span>
+                      <div class="stack">
+                        <div class="row-between">
+                          <strong>Dr. Selin Aksoy</strong>
+                          <span class="pill" data-tone="success">%96 eşleşme</span>
+                        </div>
+                        <span class="card-sub">Fizik · Vektörler · 132 kelime/dk</span>
+                        <div class="row">
+                          <span class="pill" data-tone="muted">soru → ipucu → çözüm</span>
+                          <span class="pill" data-tone="muted">sakin tempo</span>
+                        </div>
+                      </div>
+                    </label>
+                    <label class="checkbox-row">
+                      <input class="checkbox" type="radio" name="teacher" value="murat">
+                      <span class="avatar" aria-hidden="true">MD</span>
+                      <div class="stack">
+                        <div class="row-between">
+                          <strong>Murat Demir</strong>
+                          <span class="pill" data-tone="muted">%88</span>
+                        </div>
+                        <span class="card-sub">Fizik · Kuvvet · 118 kelime/dk</span>
+                        <div class="row">
+                          <span class="pill" data-tone="muted">günlük hayat</span>
+                          <span class="pill" data-tone="muted">kolaydan zora</span>
+                        </div>
+                      </div>
+                    </label>
+                    <label class="checkbox-row">
+                      <input class="checkbox" type="radio" name="teacher" value="ayse" disabled>
+                      <span class="avatar" aria-hidden="true">AK</span>
+                      <div class="stack">
+                        <div class="row-between">
+                          <strong>Ayşe Korkmaz</strong>
+                          <span class="pill" data-tone="warning">incelemede</span>
+                        </div>
+                        <span class="card-sub">Matematik · Fonksiyonlar</span>
+                      </div>
+                    </label>
+                  </fieldset>
+                </div>
+              </section>
+
+              <section class="card" id="workspace-video" data-testid="workspace-video" aria-labelledby="workspace-video-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="workspace-video-title">4 · Video stüdyosu</h2>
+                    <p class="card-sub">Tema, oran ve altyazı seç; video bu ayarlarla üretilir.</p>
+                  </div>
+                  <span class="pill" data-tone="accent" id="video-estimate">≈ 25 sn</span>
+                </div>
+                <div class="card-body">
+                  <div class="field">
+                    <label class="field-label" for="video-theme">Tema</label>
+                    <select class="select" id="video-theme">
+                      <option value="gece">Gece</option>
+                      <option value="gunes">Gün ışığı</option>
+                      <option value="orman">Orman</option>
+                      <option value="kagit">Kâğıt</option>
+                      <option value="mor">Mor sahne</option>
+                      <option value="okyanus">Okyanus</option>
+                    </select>
+                  </div>
+                  <fieldset class="field video-formats" id="video-formats">
+                    <legend class="field-label">Oranlar</legend>
+                    <label class="chip-check">
+                      <input type="checkbox" value="16x9" checked>
+                      <span>Yatay 16:9</span>
+                    </label>
+                    <label class="chip-check">
+                      <input type="checkbox" value="9x16">
+                      <span>Dikey 9:16</span>
+                    </label>
+                    <label class="chip-check">
+                      <input type="checkbox" value="1x1">
+                      <span>Kare 1:1</span>
+                    </label>
+                  </fieldset>
+                  <div class="field-row">
+                    <label class="field field-inline" for="video-intro">
+                      <span class="field-label">Giriş kartı (sn)</span>
+                      <input class="input" id="video-intro" type="number" min="0" max="12" step="0.5" value="3">
+                    </label>
+                    <label class="field field-inline" for="video-outro">
+                      <span class="field-label">Kapanış kartı (sn)</span>
+                      <input class="input" id="video-outro" type="number" min="0" max="12" step="0.5" value="4">
+                    </label>
+                  </div>
+                  <div class="field video-toggles">
+                    <label class="switch-row">
+                      <input type="checkbox" id="video-captions" checked>
+                      <span>Altyazı dosyası (SRT/VTT)</span>
+                    </label>
+                    <label class="switch-row">
+                      <input type="checkbox" id="video-cover" checked>
+                      <span>Kapak görseli</span>
+                    </label>
+                    <label class="switch-row">
+                      <input type="checkbox" id="video-inset" checked>
+                      <span>Sorunun görseli videoda küçük pencere</span>
+                    </label>
+                  </div>
+                  <p class="field-hint" id="video-note">Seçili: Gece · Yatay · altyazı açık · giriş 3 sn + kapanış 4 sn.</p>
+                </div>
+              </section>
+
+              <section class="card" data-testid="workspace-quote" aria-labelledby="workspace-quote-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="workspace-quote-title">5 · Maliyet önizlemesi</h2>
+                    <p class="card-sub">Onaylamadan önce ne harcayacağını gör.</p>
+                  </div>
+                  <span class="pill" data-tone="info">72 cr</span>
+                </div>
+                <div class="card-body">
+                  <div id="job-quote">
+                    <div class="dl-row"><dt>2 sayfa</dt><dd>2 × 8 cr</dd></div>
+                    <div class="dl-row"><dt>5 soru</dt><dd>5 × 4 cr</dd></div>
+                    <div class="dl-row"><dt>Tahmini süre · 3 dk</dt><dd>3 × 3 cr</dd></div>
+                    <div class="dl-row"><dt>Taban + karmaşıklık</dt><dd>10 cr · ×1,3</dd></div>
+                    <div class="dl-row"><dt><strong>Toplam</strong></dt><dd><strong>72 cr</strong></dd></div>
+                  </div>
+                  <p class="field-hint">≈ $0,72 · öğretmen payı $0,22 · hata olursa tam iade.</p>
+                </div>
+                <div class="card-foot">
+                  <button class="btn btn-ghost" id="btn-quote" type="button">
+                    <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Maliyeti hesapla
+                  </button>
+                  <button class="btn btn-primary" id="btn-generate" type="button">
+                    <svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg> Çözümü üret · 72 cr
+                  </button>
+                </div>
+              </section>
+
+              <section class="card" data-testid="workspace-jobs" aria-labelledby="workspace-jobs-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="workspace-jobs-title">Son işler</h2>
+                    <p class="card-sub">Devam eden ya da yeni biten üretimleri buradan izle.</p>
+                  </div>
+                  <span class="pill" data-tone="muted" id="workspace-jobs-count">0</span>
+                </div>
+                <div class="card-body">
+                  <div class="job-history" id="workspace-jobs-list" aria-live="polite"></div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3 · Kütüphane -->
+        <section class="screen" id="screen-library" data-screen="library" data-testid="screen-library" aria-labelledby="library-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Öğrenci · arşiv</p>
+              <h1 class="screen-title" id="library-title">Kütüphane</h1>
+              <p class="screen-sub">Ürettiğin her çözüm burada. Tekrar izle, hocaya göre filtrele, gereksiz olanı sil.</p>
+            </div>
+            <div class="toolbar">
+              <label class="field field--search" for="library-search">
+                <span class="card-sub">Ara</span>
+                <input class="input" id="library-search" type="search" placeholder="Başlık, konu, not, etiket" autocomplete="off">
+              </label>
+              <label class="field" for="library-filter">
+                <span class="card-sub">Öğretmene göre</span>
+                <select class="select" id="library-filter">
+                  <option value="all" selected>Tüm öğretmenler</option>
+                  <option value="selin">Dr. Selin Aksoy</option>
+                  <option value="murat">Murat Demir</option>
+                  <option value="ayse">Ayşe Korkmaz</option>
+                </select>
+              </label>
+              <label class="field" for="library-sort">
+                <span class="card-sub">Sırala</span>
+                <select class="select" id="library-sort">
+                  <option value="newest" selected>Yeni → eski</option>
+                  <option value="oldest">Eski → yeni</option>
+                  <option value="title">Başlık A → Z</option>
+                  <option value="duration">En uzun</option>
+                  <option value="watched">En çok izlenen</option>
+                </select>
+              </label>
+              <button class="btn btn-ghost btn-sm" id="btn-library-favorites" type="button" aria-pressed="false" title="Yalnız favoriler (F)">
+                <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg> Favoriler
+              </button>
+            </div>
+          </header>
+
+          <div class="split split--player">
+            <section class="card" data-testid="library-list-card" aria-labelledby="library-list-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="library-list-title">Son çözümler</h2>
+                  <p class="card-sub">6 çözüm · 28 dk toplam izleme</p>
+                </div>
+                <span class="pill" data-tone="muted">yeni → eski</span>
+              </div>
+              <div class="card-body">
+                <div class="file-list" id="library-list">
+                  <button class="file-chip" type="button" aria-pressed="true">
+                    <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-play"></use></svg></span>
+                    <span>Vektörlerde bileşke kuvvet</span>
+                    <span class="card-sub">Dr. Selin Aksoy · Fizik · 2 gün önce</span>
+                    <span class="pill" data-tone="success">72 cr</span>
+                    <span class="card-sub">04:12</span>
+                  </button>
+                  <button class="file-chip" type="button" aria-pressed="false">
+                    <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-play"></use></svg></span>
+                    <span>Türev: zincir kuralı</span>
+                    <span class="card-sub">Ayşe Korkmaz · Matematik · 5 gün önce</span>
+                    <span class="pill" data-tone="muted">64 cr</span>
+                    <span class="card-sub">05:38</span>
+                  </button>
+                  <button class="file-chip" type="button" aria-pressed="false">
+                    <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-play"></use></svg></span>
+                    <span>Asit-baz tepkimeleri</span>
+                    <span class="card-sub">Murat Demir · Kimya · geçen hafta</span>
+                    <span class="pill" data-tone="muted">58 cr</span>
+                    <span class="card-sub">03:05</span>
+                  </button>
+                  <button class="file-chip" type="button" aria-pressed="false">
+                    <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-play"></use></svg></span>
+                    <span>Fonksiyonlarda tanım kümesi</span>
+                    <span class="card-sub">Ayşe Korkmaz · Matematik · 2 hafta önce</span>
+                    <span class="pill" data-tone="muted">64 cr</span>
+                    <span class="card-sub">06:20</span>
+                  </button>
+                </div>
+              </div>
+              <div class="card-foot">
+                <span class="card-sub">Toplam 6 çözüm · 4 öğretmen</span>
+                <span class="pill" data-tone="info">kısmi üretim: 2</span>
+              </div>
+            </section>
+
+            <section class="card" data-testid="library-player-card" aria-labelledby="library-player-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="library-player-title">Oynatıcı</h2>
+                  <p class="card-sub">Slayt + metin · seslendirme modeli bekleniyor</p>
+                </div>
+                <span class="pill" data-tone="info">kısmi üretim</span>
+              </div>
+              <div class="card-body">
+                <div class="player" id="player" aria-label="Çözüm oynatıcısı">
+                  <div class="scene-card">
+                    <div class="row-between">
+                      <span class="pill" data-tone="muted">Slayt 3 / 7</span>
+                      <span class="pill" data-tone="muted">Fizik · Vektörler</span>
+                    </div>
+                    <p class="card-sub">Bileşke kuvvet</p>
+                    <h3 class="card-title">İki vektör aynı yöndeyse topla, zıtsa çıkar</h3>
+                    <p class="card-sub">Bileşke, vektörlerin uç uca eklenmesiyle bulunur. Aynı doğrultuda zıt yön: büyükten küçük çıkarılır. Dik vektörlerde Pisagor bağıntısı devreye girer.</p>
+                    <div class="row">
+                      <button class="btn btn-icon" type="button" aria-label="Çözümü oynat"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg></button>
+                      <span class="card-sub">01:24 / 04:12</span>
+                    </div>
+                  </div>
+                  <ul class="scene-list" aria-label="Sahneler">
+                    <li data-current="true">1 · Giriş</li>
+                    <li>2 · Soru okuma</li>
+                    <li data-current="true">3 · Bileşke</li>
+                    <li>4 · Örnek</li>
+                    <li>5 · Dikkat</li>
+                    <li>6 · Özet</li>
+                    <li>7 · Kapanış</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-foot">
+                <div>
+                  <p class="card-title">Vektörlerde bileşke kuvvet</p>
+                  <p class="card-sub">Dr. Selin Aksoy · 2 Kasım 2026 · 7 slayt</p>
+                </div>
+                <button class="btn btn-danger btn-sm" id="btn-delete-artifact" type="button">
+                  <svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg> Sil
+                </button>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <!-- 12 · Öğrenci: Ödevlerim ve çalışma planı (D-050) -->
+        <section class="screen" id="screen-tasks" data-screen="tasks" data-testid="screen-tasks" aria-labelledby="tasks-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Öğrenci · sınıf</p>
+              <h1 class="screen-title" id="tasks-title">Ödevlerim</h1>
+              <p class="screen-sub">Öğretmenin verdiği ödevler, teslim tarihleri ve haftalık planın tek yerde. Ödev bitince seri büyür.</p>
+            </div>
+            <div class="toolbar">
+              <button class="btn btn-ghost btn-sm" id="btn-tasks-refresh" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Yenile
+              </button>
+            </div>
+          </header>
+
+          <div class="hero-band" data-testid="tasks-hero">
+            <div class="hero-band__body">
+              <p class="hero-band__eyebrow">Bugünün odağı</p>
+              <h2 class="hero-band__title" id="tasks-next">Yaklaşan ödev yok</h2>
+              <p class="hero-band__sub" id="tasks-next-sub">Sınıfına katıl; öğretmenin ödev verdiğinde burada görünür.</p>
+              <div class="hero-band__actions">
+                <button class="btn btn-primary btn-sm" id="btn-tasks-next" type="button" disabled>Ödevi aç</button>
+                <span class="pill" data-tone="info" id="tasks-week">bu hafta 0</span>
+              </div>
+            </div>
+            <div class="stat-ring" id="tasks-ring" data-testid="tasks-ring">
+              <span id="tasks-progress">0%</span>
+            </div>
+          </div>
+
+          <section class="card goal-card" data-testid="tasks-goal-card" aria-labelledby="tasks-goal-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="tasks-goal-title">Bugünün hedefi</h2>
+                <p class="card-sub" id="tasks-goal-sub">Bugün için ödev yok</p>
+              </div>
+              <span class="pill" data-tone="info" id="tasks-goal-pill">%100</span>
+            </div>
+            <div class="card-body">
+              <progress class="progress" id="tasks-goal-progress" value="100" max="100" aria-label="Bugünkü hedef ilerlemesi">%100</progress>
+              <p class="field-hint">Hedef, bugün teslimi olan ve gecikmiş ödevlerden otomatik hesaplanır (en çok 3).</p>
+            </div>
+          </section>
+
+          <div class="kpi-row">
+            <article class="kpi" data-testid="kpi-tasks-pending">
+              <p class="kpi-label">Bekleyen</p>
+              <p class="kpi-value" id="tasks-pending">—</p>
+              <p class="kpi-delta" data-tone="warning">teslim bekliyor</p>
+            </article>
+            <article class="kpi" data-testid="kpi-tasks-done">
+              <p class="kpi-label">Tamamlanan</p>
+              <p class="kpi-value" id="tasks-done">—</p>
+              <p class="kpi-delta" data-tone="success">tüm zamanlar</p>
+            </article>
+            <article class="kpi" data-testid="kpi-tasks-streak">
+              <p class="kpi-label">Seri</p>
+              <p class="kpi-value" id="tasks-streak">—</p>
+              <p class="kpi-delta" data-tone="info">ardışık gün</p>
+            </article>
+            <article class="kpi" data-testid="kpi-tasks-classes">
+              <p class="kpi-label">Sınıf</p>
+              <p class="kpi-value" id="tasks-classes">—</p>
+              <p class="kpi-delta" data-tone="muted">kayıtlı</p>
+            </article>
+          </div>
+
+          <section class="card upcoming-card" id="tasks-upcoming-card" data-testid="tasks-upcoming-card" aria-labelledby="tasks-upcoming-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="tasks-upcoming-title">Yaklaşan teslimler</h2>
+                <p class="card-sub" id="tasks-upcoming-sub">48 saat içinde teslim edilecek ödev yok</p>
+              </div>
+              <span class="pill" data-tone="warning" id="tasks-upcoming-pill" hidden>0</span>
+            </div>
+            <div class="upcoming-list" id="tasks-upcoming"></div>
+          </section>
+
+          <section class="card" aria-labelledby="tasks-digest-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="tasks-digest-title">Haftalık özetim</h2>
+                <p class="card-sub">Kopyala, velinle ya da sınıf grubuyla paylaş</p>
+              </div>
+              <button class="btn btn-ghost btn-sm" id="btn-tasks-digest" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg> Kopyala
+              </button>
+            </div>
+            <div class="digest" id="tasks-digest"></div>
+          </section>
+
+          <div class="split">
+            <section class="card" aria-labelledby="tasks-list-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="tasks-list-title">Ödev listesi</h2>
+                  <p class="card-sub" id="tasks-list-sub">Tüm sınıflar</p>
+                </div>
+              </div>
+              <div class="task-list" id="tasks-list"></div>
+            </section>
+
+            <section class="card" aria-labelledby="tasks-join-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="tasks-join-title">Sınıfa katıl</h2>
+                  <p class="card-sub">Öğretmenin verdiği 6 karakterlik kod</p>
+                </div>
+              </div>
+              <form class="stack" id="tasks-join-form">
+                <label class="field" for="tasks-join-code">
+                  <span class="card-sub">Katılım kodu</span>
+                  <input class="input mono" id="tasks-join-code" name="code" maxlength="8" placeholder="ABC234" autocomplete="off" required>
+                </label>
+                <button class="btn btn-primary btn-block" id="btn-join-class" type="submit">Katıl</button>
+                <p class="field-hint">Kod büyük/küçük harf duyarsızdır. Katıldığın sınıflar burada listelenir.</p>
+              </form>
+              <div class="class-chips" id="tasks-class-list"></div>
+            </section>
+          </div>
+        </section>
+
+        <!-- 13 · Öğretmen: Sınıflar ve ödevler (D-050) -->
+        <section class="screen" id="screen-classes" data-screen="classes" data-testid="screen-classes" aria-labelledby="classes-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Öğretmen · sınıf yönetimi</p>
+              <h1 class="screen-title" id="classes-title">Sınıflar</h1>
+              <p class="screen-sub">Sınıf aç, kodla öğrenci topla, ödev ver ve tamamlanmayı tek bakışta gör.</p>
+            </div>
+            <div class="toolbar">
+              <button class="btn btn-ghost btn-sm" id="btn-class-refresh" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Yenile
+              </button>
+              <button class="btn btn-ghost btn-sm" id="btn-class-export" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg> CSV indir
+              </button>
+              <button class="btn btn-ghost btn-sm" id="btn-class-digest" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg> Özet metni
+              </button>
+            </div>
+          </header>
+
+          <div class="kpi-row">
+            <article class="kpi" data-testid="kpi-class-count">
+              <p class="kpi-label">Sınıf</p>
+              <p class="kpi-value" id="cls-count">—</p>
+              <p class="kpi-delta" data-tone="muted">açık sınıf</p>
+            </article>
+            <article class="kpi" data-testid="kpi-class-students">
+              <p class="kpi-label">Öğrenci</p>
+              <p class="kpi-value" id="cls-students">—</p>
+              <p class="kpi-delta" data-tone="info">toplam üye</p>
+            </article>
+            <article class="kpi" data-testid="kpi-class-assignments">
+              <p class="kpi-label">Açık ödev</p>
+              <p class="kpi-value" id="cls-assignments">—</p>
+              <p class="kpi-delta" data-tone="warning" id="cls-overdue">0 gecikmiş</p>
+            </article>
+            <article class="kpi" data-testid="kpi-class-completion">
+              <p class="kpi-label">Ortalama tamamlama</p>
+              <p class="kpi-value" id="cls-completion">—</p>
+              <p class="kpi-delta" data-tone="success">tüm sınıflar</p>
+            </article>
+          </div>
+
+          <section class="card" data-testid="class-insights" aria-labelledby="class-insights-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="class-insights-title">Sınıf içgörüleri</h2>
+                <p class="card-sub" id="class-insights-sub">Seçili sınıfın haftalık ritmi ve riskli öğrencileri</p>
+              </div>
+              <div class="toolbar">
+                <span class="pill" data-tone="muted" id="cls-insight-scope">sınıf seçilmedi</span>
+                <button class="btn btn-ghost btn-sm" id="btn-class-remind" type="button">
+                  <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg> Hatırlat
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="insight-grid">
+                <div class="insight">
+                  <p class="insight__label">Bu hafta tamamlanan</p>
+                  <p class="insight__value" id="cls-weekly">—</p>
+                  <p class="insight__hint">son 7 gün</p>
+                </div>
+                <div class="insight">
+                  <p class="insight__label">Zamanında teslim</p>
+                  <p class="insight__value" id="cls-ontime">—</p>
+                  <p class="insight__hint">teslim tarihli ödevlerde</p>
+                </div>
+                <div class="insight">
+                  <p class="insight__label">Riskli öğrenci</p>
+                  <p class="insight__value" id="cls-risk">—</p>
+                  <p class="insight__hint">eksik veya gecikmiş</p>
+                </div>
+              </div>
+              <div class="week-bars" id="cls-week" role="img" aria-label="Son 7 günün tamamlanma sayısı"></div>
+            </div>
+          </section>
+
+          <div class="split">
+            <section class="card" aria-labelledby="class-list-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="class-list-title">Sınıflarım</h2>
+                  <p class="card-sub" id="class-list-sub">Katılım kodunu öğrencilerle paylaş</p>
+                </div>
+              </div>
+              <div class="class-list" id="class-list"></div>
+              <form class="stack" id="class-create-form">
+                <div class="row">
+                  <label class="field field--grow" for="class-name">
+                    <span class="card-sub">Sınıf adı</span>
+                    <input class="input" id="class-name" name="name" maxlength="80" placeholder="11-A Fizik" required>
+                  </label>
+                  <label class="field" for="class-subject">
+                    <span class="card-sub">Ders</span>
+                    <input class="input" id="class-subject" name="subject" maxlength="40" placeholder="Fizik">
+                  </label>
+                  <label class="field" for="class-grade">
+                    <span class="card-sub">Sınıf düzeyi</span>
+                    <input class="input" id="class-grade" name="grade" maxlength="20" placeholder="11">
+                  </label>
+                </div>
+                <button class="btn btn-primary" id="btn-class-create" type="submit">Sınıf aç</button>
+              </form>
+            </section>
+
+            <section class="card" aria-labelledby="class-assign-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="class-assign-title">Ödev ver</h2>
+                  <p class="card-sub" id="class-assign-sub">Sınıf seç, başlık ve teslim tarihi gir</p>
+                </div>
+              </div>
+              <form class="stack" id="class-assign-form">
+                <label class="field" for="assign-class">
+                  <span class="card-sub">Sınıf</span>
+                  <select class="select" id="assign-class" name="classId"></select>
+                </label>
+                <label class="field" for="assign-title">
+                  <span class="card-sub">Başlık</span>
+                  <input class="input" id="assign-title" name="title" maxlength="120" placeholder="Vektörlerde bileşke kuvvet" required>
+                </label>
+                <label class="field" for="assign-note">
+                  <span class="card-sub">Not (isteğe bağlı)</span>
+                  <input class="input" id="assign-note" name="note" maxlength="600" placeholder="Sayfa 42-45, soru 3-7">
+                </label>
+                <label class="field" for="assign-due">
+                  <span class="card-sub">Teslim tarihi</span>
+                  <input class="input" id="assign-due" name="dueAt" type="date">
+                </label>
+                <button class="btn btn-primary" id="btn-assign-create" type="submit">Ödevi yayınla</button>
+              </form>
+            </section>
+          </div>
+
+          <section class="card" aria-labelledby="class-assignment-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="class-assignment-title">Ödevler</h2>
+                <p class="card-sub" id="class-assignment-sub">Tamamlanma öğrenci × ödev hücresinden hesaplanır</p>
+              </div>
+            </div>
+            <div class="assignment-tools">
+              <label class="field field--search" for="assignment-search">
+                <span class="visually-hidden">Ödev ara</span>
+                <input class="input input--sm" id="assignment-search" type="search" placeholder="Ödev ara" autocomplete="off">
+              </label>
+              <label class="field" for="assignment-state">
+                <span class="visually-hidden">Duruma göre süz</span>
+                <select class="select select--sm" id="assignment-state">
+                  <option value="">Tüm durumlar</option>
+                  <option value="assigned">Atanmış</option>
+                  <option value="watching">İzleniyor</option>
+                  <option value="overdue">Gecikmiş</option>
+                  <option value="done">Tamamlandı</option>
+                </select>
+              </label>
+              <label class="field" for="assignment-sort">
+                <span class="visually-hidden">Sıralama</span>
+                <select class="select select--sm" id="assignment-sort">
+                  <option value="due">Teslim tarihi (yakın önce)</option>
+                  <option value="created">Yayın tarihi (yeni önce)</option>
+                  <option value="title">Başlık (A–Z)</option>
+                  <option value="completion">Tamamlama (düşük önce)</option>
+                </select>
+              </label>
+            </div>
+            <p class="assignment-tools__note" id="assignment-tools-note" hidden></p>
+            <div id="class-assignment-list"></div>
+          </section>
+
+          <section class="card archive-card" id="class-archive-card" aria-labelledby="class-archive-title" hidden>
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="class-archive-title">Arşiv</h2>
+                <p class="card-sub" id="class-archive-sub">Arşivlenen ödevler listeden çıkar; ilerleme ve özetlere sayılmaz.</p>
+              </div>
+              <span class="pill" data-tone="muted" id="class-archive-pill" hidden>0</span>
+            </div>
+            <div class="archive-list" id="class-archive-list"></div>
+          </section>
+
+          <section class="card" aria-labelledby="class-detail-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="class-detail-title">Sınıf detayı</h2>
+                <p class="card-sub">Bir sınıfta "Detay"a bas; üye ilerlemesi burada açılır.</p>
+              </div>
+              <label class="field field--search" for="class-member-search">
+                <span class="visually-hidden">Öğrenci ara</span>
+                <input class="input input--sm" id="class-member-search" type="search" placeholder="Öğrenci ara" autocomplete="off">
+              </label>
+            </div>
+            <div id="class-members" class="member-list"></div>
+          </section>
+        </section>
+
+        <!-- 4 · Öğrenci: Credits -->
+        <section class="screen" id="screen-credits" data-screen="credits" data-testid="screen-credits" aria-labelledby="credits-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Öğrenci · cüzdan</p>
+              <h1 class="screen-title" id="credits-title">Credits</h1>
+              <p class="screen-sub">1 credit = 1 sent. Paket al, üretimde harca, kalanı her an gör. Defter yalnız ekleme yapar.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="warning">Simülasyon · gerçek ödeme yok</span>
+            </div>
+          </header>
+
+          <section class="card" data-testid="credits-balance" aria-labelledby="credits-balance-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="credits-balance-title">Kullanılabilir bakiye</h2>
+                <p class="card-sub">Bu ay 224 cr harcandı · en son harcama 72 cr</p>
+              </div>
+              <span class="pill" data-tone="muted">1 credit = 1 sent</span>
+            </div>
+            <div class="card-body">
+              <div class="row-between">
+                <div class="stack">
+                  <p class="kpi-value"><span id="credit-balance">1.240</span> cr</p>
+                  <p class="card-sub">≈ $12,40 · sonraki paket eşiğine 376 cr</p>
+                  <progress class="progress" value="1240" max="1616" aria-label="Sonraki paket eşiğine ilerleme">%77</progress>
+                </div>
+                <div class="stat-ring" data-testid="credits-ring"><span>%77</span></div>
+              </div>
+              <div class="grid-3">
+                <div class="dl-row"><dt>Bu ay üretim</dt><dd>6</dd></div>
+                <div class="dl-row"><dt>En son harcama</dt><dd>72 cr</dd></div>
+                <div class="dl-row"><dt>Toplam tasarruf</dt><dd>$1,20</dd></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card" data-testid="credits-insights" aria-labelledby="credits-insights-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="credits-insights-title">Harcama analizi</h2>
+                <p class="card-sub">Son 6 ayın üretim harcaması; defter kayıtlarından canlı hesaplanır.</p>
+              </div>
+              <span class="pill" data-tone="info">canlı</span>
+            </div>
+            <div class="card-body">
+              <div class="insights-chart" id="credits-insights-chart" aria-live="polite"></div>
+              <div class="grid-3">
+                <div class="dl-row"><dt>Bu ay ortalama çözüm</dt><dd id="insight-average">—</dd></div>
+                <div class="dl-row"><dt>Çözüm başına maliyet</dt><dd id="insight-per-solution">—</dd></div>
+                <div class="dl-row"><dt>Bakiye yeter</dt><dd id="insight-runway">—</dd></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="stack" data-testid="credits-packages" aria-labelledby="credits-packages-title">
+            <div class="row-between">
+              <div>
+                <h2 class="card-title" id="credits-packages-title">Paket seç</h2>
+                <p class="card-sub">Büyük paket, daha düşük birim fiyat. Satın alma bu sürümde simülasyondur.</p>
+              </div>
+              <span class="pill" data-tone="muted">3 paket</span>
+            </div>
+            <div class="card-grid" id="package-list">
+              <label class="card" data-testid="package-p10">
+                <div class="card-body">
+                  <div class="row-between">
+                    <strong>Başlangıç</strong>
+                    <input class="checkbox" type="radio" name="package" value="p10">
+                  </div>
+                  <p class="kpi-value">$10</p>
+                  <p class="card-sub">$0,0100 / credit · ≈ 13 çözüm</p>
+                  <p class="card-sub">Tek sayfalık bir çözüm ≈ 36 cr. Denemek için yeterli.</p>
+                </div>
+              </label>
+              <label class="card" data-testid="package-p30">
+                <div class="card-body">
+                  <div class="row-between">
+                    <strong>Standart</strong>
+                    <span class="pill" data-tone="info">en çok tercih edilen</span>
+                  </div>
+                  <p class="kpi-value">$30</p>
+                  <p class="card-sub">$0,0060 / credit · ≈ 69 çözüm</p>
+                  <p class="card-sub">5.000 credit. Düzenli çalışan öğrenci için dengeli paket.</p>
+                  <input class="checkbox" type="radio" name="package" value="p30" checked>
+                </div>
+              </label>
+              <label class="card" data-testid="package-p100">
+                <div class="card-body">
+                  <div class="row-between">
+                    <strong>Profesyonel</strong>
+                    <input class="checkbox" type="radio" name="package" value="p100">
+                  </div>
+                  <p class="kpi-value">$100</p>
+                  <p class="card-sub">$0,0059 / credit · ≈ 236 çözüm</p>
+                  <p class="card-sub">En düşük birim fiyat. Sınav dönemi için geniş bakiye.</p>
+                </div>
+              </label>
+            </div>
+            <div class="row-between">
+              <p class="field-hint"><svg class="icon" aria-hidden="true"><use href="#i-info"></use></svg> Kart bilgisi istenmez; bakiye test amaçlı yüklenir.</p>
+              <button class="btn btn-primary" id="btn-buy" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-card"></use></svg> <span id="btn-buy-label">Satın al · simülasyon</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="card" data-testid="credits-history" aria-labelledby="credits-history-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="credits-history-title">Credit defteri</h2>
+                <p class="card-sub">Append-only kayıt · her satır sonrası bakiye</p>
+              </div>
+              <button class="btn btn-ghost btn-sm" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Yenile
+              </button>
+            </div>
+            <div class="table-wrap">
+              <table class="table" id="credit-history">
+                <caption>Son credit hareketleri</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Tür</th>
+                    <th scope="col">Açıklama</th>
+                    <th scope="col" data-num>Miktar</th>
+                    <th scope="col" data-num>Bakiye</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>02 Kas 2026</td>
+                    <td><span class="pill" data-tone="warning">harcama</span></td>
+                    <td>Vektörlerde bileşke kuvvet · 2 sayfa</td>
+                    <td data-num>−30 cr</td>
+                    <td data-num>1.240 cr</td>
+                  </tr>
+                  <tr>
+                    <td>01 Kas 2026</td>
+                    <td><span class="pill" data-tone="warning">harcama</span></td>
+                    <td>Türev: zincir kuralı · 3 sayfa</td>
+                    <td data-num>−72 cr</td>
+                    <td data-num>1.270 cr</td>
+                  </tr>
+                  <tr>
+                    <td>30 Eki 2026</td>
+                    <td><span class="pill" data-tone="warning">harcama</span></td>
+                    <td>Asit-baz tepkimeleri · 2 sayfa</td>
+                    <td data-num>−64 cr</td>
+                    <td data-num>1.342 cr</td>
+                  </tr>
+                  <tr>
+                    <td>29 Eki 2026</td>
+                    <td><span class="pill" data-tone="warning">harcama</span></td>
+                    <td>Fonksiyonlarda tanım kümesi</td>
+                    <td data-num>−58 cr</td>
+                    <td data-num>1.406 cr</td>
+                  </tr>
+                  <tr>
+                    <td>28 Eki 2026</td>
+                    <td><span class="pill" data-tone="success">satın alma</span></td>
+                    <td>Başlangıç paketi · simülasyon</td>
+                    <td data-num>+1.000 cr</td>
+                    <td data-num>1.464 cr</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <!-- 5 · Öğretmen: Stüdyo -->
+        <section class="screen" id="screen-studio" data-screen="studio" data-testid="screen-studio" aria-labelledby="studio-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Öğretmen · stüdyo</p>
+              <h1 class="screen-title" id="studio-title">Anlatımını stüdyoya taşı</h1>
+              <p class="screen-sub">Ders videolarını yükle; hızın, vurguların ve pedagojik sıran çıkarılsın. Profil doğrulanınca $10 hoş geldin bakiyesi yazılır.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="warning"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> Eğitimde · %68</span>
+            </div>
+          </header>
+
+          <section class="card" data-testid="studio-profile" aria-labelledby="studio-profile-title">
+            <div class="card-body">
+              <div class="row-between">
+                <div class="row">
+                  <span class="avatar" aria-hidden="true">SA</span>
+                  <div class="stack">
+                    <h2 class="card-title" id="studio-profile-title">Dr. Selin Aksoy</h2>
+                    <p class="card-sub">Fizik · Vektörler, kuvvet, hareket · 2 video · 1 ses örneği</p>
+                    <div class="row">
+                      <span class="pill" data-tone="success"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> rıza kayıtlı</span>
+                      <span class="pill" data-tone="info">doğrulanmış</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="stat-ring" data-testid="studio-ring"><span>%68</span></div>
+              </div>
+              <div class="grid-3">
+                <div class="dl-row"><dt>Profil eğitimi</dt><dd>%68</dd></div>
+                <div class="dl-row"><dt>Konuşma hızı</dt><dd>132 kelime/dk</dd></div>
+                <div class="dl-row"><dt>Kaynak video</dt><dd>2</dd></div>
+              </div>
+            </div>
+          </section>
+
+          <div class="split">
+            <div class="stack">
+              <section class="card" data-testid="studio-videos" aria-labelledby="teacher-videos-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="teacher-videos-title">Kaynak videolar</h2>
+                    <p class="card-sub">En az 2 ders anlatımı + 3–10 dk temiz ses örneği önerilir.</p>
+                  </div>
+                  <button class="btn btn-ghost btn-sm" id="btn-video-add" type="button">
+                    <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg> Video ekle
+                  </button>
+                </div>
+                <div class="card-body">
+                  <input class="visually-hidden" id="video-input" type="file" accept="video/mp4,video/quicktime,audio/wav,audio/mpeg" multiple>
+                  <div class="file-list" id="teacher-videos">
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-video"></use></svg></span>
+                      <span>vektorler-anlatim.mp4</span>
+                      <span class="card-sub">12:40 · ders anlatımı · 184 MB</span>
+                      <span class="pill" data-tone="success">transkript hazır</span>
+                      <button class="btn btn-icon btn-sm" type="button" aria-label="vektorler-anlatim.mp4 videosunu kaldır"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-mic"></use></svg></span>
+                      <span>ses-ornegi-01.wav</span>
+                      <span class="card-sub">04:20 · ses örneği · 24 MB</span>
+                      <span class="pill" data-tone="success">işlendi</span>
+                      <button class="btn btn-icon btn-sm" type="button" aria-label="ses-ornegi-01.wav dosyasını kaldır"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                    </div>
+                  </div>
+                  <label class="dropzone" for="video-input">
+                    <svg class="icon" aria-hidden="true"><use href="#i-upload"></use></svg>
+                    <span class="card-title">Yeni kaynak ekle</span>
+                    <span class="dropzone-hint">MP4, MOV, WAV · en fazla 500 MB</span>
+                  </label>
+                </div>
+              </section>
+
+              <section class="card" data-testid="studio-quality" aria-labelledby="studio-quality-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="studio-quality-title">Kaynak kalitesi</h2>
+                    <p class="card-sub">Profilin doğrulanma hızını belirleyen dört ölçüt; canlı hesaplanır.</p>
+                  </div>
+                  <span class="pill" data-tone="info" id="quality-score">—</span>
+                </div>
+                <div class="card-body">
+                  <div class="quality-list" id="quality-list">
+                    <div class="quality-item" data-key="lessons">
+                      <span class="quality-item__dot" aria-hidden="true"></span>
+                      <span class="quality-item__label">Ders anlatımı</span>
+                      <span class="quality-item__value" id="quality-lessons">—</span>
+                    </div>
+                    <div class="quality-item" data-key="minutes">
+                      <span class="quality-item__dot" aria-hidden="true"></span>
+                      <span class="quality-item__label">Toplam süre</span>
+                      <span class="quality-item__value" id="quality-minutes">—</span>
+                    </div>
+                    <div class="quality-item" data-key="transcripts">
+                      <span class="quality-item__dot" aria-hidden="true"></span>
+                      <span class="quality-item__label">Transkript kapsamı</span>
+                      <span class="quality-item__value" id="quality-transcripts">—</span>
+                    </div>
+                    <div class="quality-item" data-key="vector">
+                      <span class="quality-item__dot" aria-hidden="true"></span>
+                      <span class="quality-item__label">Anlatım vektörü</span>
+                      <span class="quality-item__value" id="quality-vector">—</span>
+                    </div>
+                  </div>
+                  <p class="field-hint" id="quality-next">—</p>
+                </div>
+              </section>
+
+              <section class="card" data-testid="studio-consent" aria-labelledby="studio-consent-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="studio-consent-title">Rıza ve ses profili</h2>
+                    <p class="card-sub">Sesin klonlanmadan önce yazılı rıza kaydı zorunlu.</p>
+                  </div>
+                  <span class="pill" data-tone="success"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> rıza kayıtlı</span>
+                </div>
+                <div class="card-body">
+                  <label class="checkbox-row" for="consent-check">
+                    <input class="checkbox" id="consent-check" type="checkbox" checked>
+                    <div class="stack">
+                      <strong>Sesimin yalnız bu uygulamada, seçtiğim öğrencilerin çözümlerinde kullanılmasına izin veriyorum.</strong>
+                      <span class="card-sub">Kayıt: 12 Ekim 2026 · Silme hakkı: Ayarlar → Ses profilini sil</span>
+                    </div>
+                  </label>
+                  <p class="field-hint"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg> Ses profili için TTS konektörü gerekir; bugün <strong>pending-model</strong> durumunda. Rıza olmadan profil verified olamaz.</p>
+                </div>
+              </section>
+            </div>
+
+            <div class="stack">
+              <section class="card" data-testid="studio-training" aria-labelledby="studio-training-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="studio-training-title">Profil eğitimi</h2>
+                    <p class="card-sub">Yüklenen kaynaklardan anlatım tarzı çıkarımı</p>
+                  </div>
+                  <span class="pill" data-tone="warning">%68</span>
+                </div>
+                <div class="card-body">
+                  <div class="progress-label">
+                    <span>Eğitim ilerlemesi</span>
+                    <strong>%68</strong>
+                  </div>
+                  <progress class="progress" id="training-bar" max="100" value="68" aria-label="Profil eğitimi ilerlemesi">%68</progress>
+                  <ol class="timeline">
+                    <li class="timeline-step" data-state="done">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                      <div><p class="card-title">2 video yüklendi</p><p class="card-sub">Kaynaklar doğrulandı</p></div>
+                      <span class="pill" data-tone="success">tamam</span>
+                    </li>
+                    <li class="timeline-step" data-state="done">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                      <div><p class="card-title">Transkript çıkarıldı</p><p class="card-sub">Yazılı metin hazır</p></div>
+                      <span class="pill" data-tone="success">tamam</span>
+                    </li>
+                    <li class="timeline-step" data-state="active">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg></span>
+                      <div><p class="card-title">Anlatım tarzı çıkarıldı</p><p class="card-sub">Hız, vurgu, pedagojik sıra</p></div>
+                      <span class="pill" data-tone="info">%68</span>
+                    </li>
+                    <li class="timeline-step">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg></span>
+                      <div><p class="card-title">Ses profili</p><p class="card-sub">XTTS modeli bekleniyor</p></div>
+                      <span class="pill" data-tone="muted">model gerekli</span>
+                    </li>
+                    <li class="timeline-step">
+                      <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg></span>
+                      <div><p class="card-title">Yönetici incelemesi</p><p class="card-sub">Onay kuyruğuna düşer</p></div>
+                      <span class="pill" data-tone="muted">sırada</span>
+                    </li>
+                  </ol>
+                  <button class="btn btn-primary btn-block" id="btn-submit-review" type="button" disabled>
+                    <svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg> İncelemeye gönder · %100 gerekli
+                  </button>
+                  <p class="field-hint">Eğitim tamamlanınca bu düğme açılır ve başvurun onay kuyruğuna düşer.</p>
+                </div>
+              </section>
+
+              <section class="card" data-testid="studio-style-vector" aria-labelledby="studio-style-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="studio-style-title">Anlatım vektörü</h2>
+                    <p class="card-sub">Üretimde LLM sistem istemine enjekte edilir</p>
+                  </div>
+                  <span class="pill" data-tone="info">taslak</span>
+                </div>
+                <div class="card-body">
+                  <dl id="style-vector">
+                    <div class="dl-row"><dt>Hız</dt><dd>Orta · 132 kelime/dk</dd></div>
+                    <div class="dl-row"><dt>Ton</dt><dd>Samimi-öğretici</dd></div>
+                    <div class="dl-row"><dt>Yapı</dt><dd>Soru → ipucu → çözüm → özet</dd></div>
+                    <div class="dl-row"><dt>Zorluk</dt><dd>Kolaydan zora</dd></div>
+                    <div class="dl-row"><dt>Soru stili</dt><dd>Önce şıkları eleyerek</dd></div>
+                    <div class="dl-row"><dt>Benzetme</dt><dd>Günlük hayat</dd></div>
+                  </dl>
+                  <div class="stack">
+                    <p class="card-sub">Karakteristik ifadeler</p>
+                    <div class="row">
+                      <span class="pill" data-tone="info">“bir bakalım”</span>
+                      <span class="pill" data-tone="info">“dikkat edin”</span>
+                      <span class="pill" data-tone="info">“burada kritik nokta”</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6 · Öğretmen: Kazanç -->
+        <section class="screen" id="screen-earnings" data-screen="earnings" data-testid="screen-earnings" aria-labelledby="earnings-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Öğretmen · kazanç</p>
+              <h1 class="screen-title" id="earnings-title">Kazancın</h1>
+              <p class="screen-sub">Her tüketilen creditin %30'u anında sana yazılır. Satış anında değil, çözüm izlendiğinde.</p>
+            </div>
+            <div class="toolbar">
+              <label class="field" for="earn-period">
+                <span class="card-sub">Dönem</span>
+                <select class="select" id="earn-period">
+                  <option>Bu ay · Kasım 2026</option>
+                  <option>Geçen ay · Ekim 2026</option>
+                  <option>Son 3 ay</option>
+                </select>
+              </label>
+            </div>
+          </header>
+
+          <div class="kpi-row">
+            <article class="kpi" data-testid="kpi-earn-total">
+              <p class="kpi-label">Bu ay kazanç</p>
+              <p class="kpi-value" id="earn-total">—</p>
+              <p class="kpi-delta" data-tone="success" id="earn-total-sub">yükleniyor…</p>
+            </article>
+            <article class="kpi" data-testid="kpi-earn-credits">
+              <p class="kpi-label">Tüketilen credit</p>
+              <p class="kpi-value" id="earn-credits">—</p>
+              <p class="kpi-delta" data-tone="muted" id="earn-credits-sub">çözüm</p>
+            </article>
+            <article class="kpi" data-testid="kpi-earn-pending">
+              <p class="kpi-label">Bekleyen pay</p>
+              <p class="kpi-value" id="earn-pending">—</p>
+              <p class="kpi-delta" data-tone="warning">işler tamamlanınca</p>
+            </article>
+            <article class="kpi" data-testid="kpi-earn-conversion">
+              <p class="kpi-label">Pay / çözüm</p>
+              <p class="kpi-value" id="earn-average">—</p>
+              <p class="kpi-delta" data-tone="info" id="earn-average-sub">yazılan paylar</p>
+            </article>
+          </div>
+
+          <div class="split">
+            <section class="card" data-testid="earnings-chart-card" aria-labelledby="earnings-chart-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="earnings-chart-title">Aylık kazanç</h2>
+                  <p class="card-sub" id="earn-chart-sub">Seçili dönem · $ cinsinden</p>
+                </div>
+                <div class="legend">
+                  <span class="legend-item" data-series="a">Öğretmen payı</span>
+                  <span class="legend-item" data-series="b">Bu ay</span>
+                </div>
+              </div>
+              <div class="chart-box" id="earn-chart">
+                <svg viewBox="0 0 560 230" role="img" aria-label="Haziran 18, Temmuz 26, Ağustos 34, Eylül 48, Ekim 86, Kasım 128 dolar aylık kazanç">
+                  <line x1="24" y1="190" x2="540" y2="190"></line>
+                  <line x1="24" y1="140" x2="540" y2="140"></line>
+                  <line x1="24" y1="90" x2="540" y2="90"></line>
+                  <line x1="24" y1="40" x2="540" y2="40"></line>
+                  <rect x="40" y="162" width="48" height="28" rx="4" data-series="a"></rect>
+                  <rect x="125" y="148" width="48" height="42" rx="4" data-series="a"></rect>
+                  <rect x="210" y="135" width="48" height="55" rx="4" data-series="a"></rect>
+                  <rect x="295" y="116" width="48" height="74" rx="4" data-series="a"></rect>
+                  <rect x="380" y="78" width="48" height="112" rx="4" data-series="a"></rect>
+                  <rect x="465" y="44" width="48" height="146" rx="4" data-series="hot"></rect>
+                  <text x="489" y="32" text-anchor="middle">$128</text>
+                  <text x="64" y="210" text-anchor="middle">Haz</text>
+                  <text x="149" y="210" text-anchor="middle">Tem</text>
+                  <text x="234" y="210" text-anchor="middle">Ağu</text>
+                  <text x="319" y="210" text-anchor="middle">Eyl</text>
+                  <text x="404" y="210" text-anchor="middle">Eki</text>
+                  <text x="489" y="210" text-anchor="middle">Kas</text>
+                </svg>
+              </div>
+            </section>
+
+            <section class="card" data-testid="earnings-withdraw" aria-labelledby="earnings-withdraw-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="earnings-withdraw-title">Ödeme</h2>
+                  <p class="card-sub">v0.2'de gerçek ödeme yok; bakiye birikir.</p>
+                </div>
+                <span class="pill" data-tone="muted">eşik $25</span>
+              </div>
+              <div class="card-body">
+                <p class="kpi-label">Çekilebilir bakiye</p>
+                <p class="kpi-value" id="earn-payout">—</p>
+                <div class="dl-row"><dt>Bekleyen pay</dt><dd id="earn-payout-pending">—</dd></div>
+                <div class="dl-row"><dt>Doğrulama ödülü</dt><dd id="earn-bonus">—</dd></div>
+                <p class="field-hint"><svg class="icon" aria-hidden="true"><use href="#i-info"></use></svg> Ödeme sağlayıcısı hukuk onayı sonrası eklenecek.</p>
+              </div>
+              <div class="card-foot">
+                <button class="btn btn-primary btn-block" id="btn-withdraw" type="button" disabled>
+                  <svg class="icon" aria-hidden="true"><use href="#i-wallet"></use></svg> Çekim talebi · yakında
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <section class="card" data-testid="earnings-table-card" aria-labelledby="earnings-table-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="earnings-table-title">Hareketler</h2>
+                <p class="card-sub">Tüketim anında yazılan paylar</p>
+              </div>
+              <button class="btn btn-ghost btn-sm" id="btn-earn-refresh" type="button"><svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Yenile</button>
+            </div>
+            <div class="table-wrap">
+              <table class="table" id="earn-table">
+                <caption>Öğretmen kazanç hareketleri</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Tür</th>
+                    <th scope="col">Kaynak</th>
+                    <th scope="col" data-num>Credit</th>
+                    <th scope="col" data-num>Tutar</th>
+                    <th scope="col">Durum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>02 Kas 2026</td>
+                    <td><span class="pill" data-tone="success">öğretmen payı</span></td>
+                    <td>Vektörlerde bileşke kuvvet · Elif Y.</td>
+                    <td data-num>72 cr</td>
+                    <td data-num>+$0,22</td>
+                    <td><span class="pill" data-tone="success">yazıldı</span></td>
+                  </tr>
+                  <tr>
+                    <td>02 Kas 2026</td>
+                    <td><span class="pill" data-tone="success">öğretmen payı</span></td>
+                    <td>Kuvvet ve hareket · Deniz A.</td>
+                    <td data-num>108 cr</td>
+                    <td data-num>+$0,32</td>
+                    <td><span class="pill" data-tone="success">yazıldı</span></td>
+                  </tr>
+                  <tr>
+                    <td>31 Eki 2026</td>
+                    <td><span class="pill" data-tone="info">doğrulama ödülü</span></td>
+                    <td>Profil onayı · hoş geldin bakiyesi</td>
+                    <td data-num>—</td>
+                    <td data-num>+$10,00</td>
+                    <td><span class="pill" data-tone="success">yazıldı</span></td>
+                  </tr>
+                  <tr>
+                    <td>30 Eki 2026</td>
+                    <td><span class="pill" data-tone="success">öğretmen payı</span></td>
+                    <td>Asit-baz tepkimeleri · Elif Y.</td>
+                    <td data-num>58 cr</td>
+                    <td data-num>+$0,17</td>
+                    <td><span class="pill" data-tone="warning">bekliyor</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <!-- 7 · Admin: Onay Kuyruğu -->
+        <section class="screen" id="screen-approval" data-screen="approval" data-testid="screen-approval" aria-labelledby="approval-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Yönetici · doğrulama</p>
+              <h1 class="screen-title" id="approval-title">Onay kuyruğu</h1>
+              <p class="screen-sub">Öğretmen profillerini incele. Onay, ses rızası ve kaynak kalitesi kontrol edilmeden verilmez.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="warning"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> 2 başvuru bekliyor</span>
+            </div>
+          </header>
+
+          <div class="kpi-row">
+            <article class="kpi" data-testid="approval-kpi-total">
+              <p class="kpi-label">Kuyrukta</p>
+              <p class="kpi-value" id="approval-kpi-total">0</p>
+              <p class="kpi-delta" data-tone="muted">başvuru</p>
+            </article>
+            <article class="kpi" data-testid="approval-kpi-ready">
+              <p class="kpi-label">Onaya hazır</p>
+              <p class="kpi-value" id="approval-kpi-ready">0</p>
+              <p class="kpi-delta" data-tone="success">rıza + kaynak tamam</p>
+            </article>
+            <article class="kpi" data-testid="approval-kpi-missing">
+              <p class="kpi-label">Eksik kanıt</p>
+              <p class="kpi-value" id="approval-kpi-missing">0</p>
+              <p class="kpi-delta" data-tone="warning">rıza/ses eksiği</p>
+            </article>
+            <article class="kpi" data-testid="approval-kpi-oldest">
+              <p class="kpi-label">En eski bekleme</p>
+              <p class="kpi-value" id="approval-kpi-oldest">—</p>
+              <p class="kpi-delta" data-tone="info">ilk başvuru</p>
+            </article>
+          </div>
+
+          <div class="split">
+            <section class="card" data-testid="approval-list-card" aria-labelledby="approval-list-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="approval-list-title">Bekleyen başvurular</h2>
+                  <p class="card-sub" id="approval-list-sub">En eski önce</p>
+                </div>
+                <span class="pill" data-tone="muted" id="approval-list-count">0</span>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <label class="field" for="approval-search">
+                    <span class="visually-hidden">Başvuru ara</span>
+                    <input class="input" id="approval-search" type="search" placeholder="Ad, branş veya şehir ara…" aria-label="Başvuru ara" autocomplete="off">
+                  </label>
+                  <label class="field" for="approval-filter">
+                    <span class="visually-hidden">Hazırlık filtresi</span>
+                    <select class="select" id="approval-filter" aria-label="Hazırlık filtresi">
+                      <option value="all" selected>Tümü</option>
+                      <option value="ready">Onaya hazır</option>
+                      <option value="missing">Eksik kanıt</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="file-list" id="approval-list">
+                  <button class="file-chip" type="button" aria-pressed="true">
+                    <span class="avatar" aria-hidden="true">SA</span>
+                    <span>Dr. Selin Aksoy</span>
+                    <span class="card-sub">Fizik · 2 video · 14,6 dk · 2 saat önce</span>
+                    <span class="pill" data-tone="success">%100</span>
+                  </button>
+                  <button class="file-chip" type="button" aria-pressed="false">
+                    <span class="avatar" aria-hidden="true">EY</span>
+                    <span>Emre Yıldız</span>
+                    <span class="card-sub">Matematik · 3 video · 21,2 dk · 5 saat önce</span>
+                    <span class="pill" data-tone="success">%100</span>
+                  </button>
+                </div>
+                <div class="empty">
+                  <span class="empty-icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                  <p class="empty-title">Bugünkü kararlar</p>
+                  <p class="empty-text">Henüz karar vermedin. İlk onayla birlikte öğretmene $10 hoş geldin bakiyesi yazılır.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="card" data-testid="approval-detail-card" aria-labelledby="approval-detail-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="approval-detail-title">İnceleme detayı</h2>
+                  <p class="card-sub">Dr. Selin Aksoy · Fizik</p>
+                </div>
+                <span class="pill" data-tone="info">başvuru 1042</span>
+              </div>
+              <div class="card-body" id="review-detail">
+                <div class="row">
+                  <span class="avatar" aria-hidden="true">SA</span>
+                  <div class="stack">
+                    <h3 class="card-title">Dr. Selin Aksoy</h3>
+                    <p class="card-sub">Fizik · Vektörler ve kuvvet · İstanbul</p>
+                  </div>
+                </div>
+                <p class="card-sub">12 yıllık lise deneyimi. Anlatımda önce soruyu okur, ipucu verir, sonra çözüme geçer; günlük hayat benzetmeleri kullanır.</p>
+                <div class="grid-3">
+                  <div class="dl-row"><dt>Eğitim</dt><dd>%100</dd></div>
+                  <div class="dl-row"><dt>Video</dt><dd>2</dd></div>
+                  <div class="dl-row"><dt>Kelime/dk</dt><dd>132</dd></div>
+                </div>
+                <div class="row">
+                  <span class="pill" data-tone="muted">soru → ipucu → çözüm → özet</span>
+                  <span class="pill" data-tone="muted">samimi-öğretici</span>
+                  <span class="pill" data-tone="muted">günlük hayat</span>
+                </div>
+                <ol class="timeline">
+                  <li class="timeline-step" data-state="done">
+                    <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                    <div><p class="card-title">Yazılı ses rızası</p><p class="card-sub">12 Ekim 2026 · kayıtlı</p></div>
+                    <span class="pill" data-tone="success">uygun</span>
+                  </li>
+                  <li class="timeline-step" data-state="done">
+                    <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                    <div><p class="card-title">2 ders videosu</p><p class="card-sub">Transkriptler mevcut</p></div>
+                    <span class="pill" data-tone="success">uygun</span>
+                  </li>
+                  <li class="timeline-step" data-state="active">
+                    <span class="timeline-dot"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg></span>
+                    <div><p class="card-title">Ses profili</p><p class="card-sub">TTS modeli gerekli</p></div>
+                    <span class="pill" data-tone="warning">eksik</span>
+                  </li>
+                </ol>
+                <p class="field-hint"><svg class="icon" aria-hidden="true"><use href="#i-coins"></use></svg> Onay anında $10 hoş geldin bakiyesi yazılır; sonraki her harcamada %30 pay işler.</p>
+              </div>
+              <div class="card-foot">
+                <label class="field" for="review-note">
+                  <span class="card-sub">Karar notu (isteğe bağlı)</span>
+                  <textarea class="textarea" id="review-note" rows="3" placeholder="Örn. ses örneği kısa, ikinci kaynak isteyin…"></textarea>
+                </label>
+                <button class="btn btn-danger" id="btn-reject" type="button">
+                  <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg> Reddet
+                </button>
+                <button class="btn btn-primary" id="btn-approve" type="button">
+                  <svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg> Onayla ve $10 yaz
+                </button>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <!-- 8 · Admin: Ekonomi -->
+        <section class="screen" id="screen-economy" data-screen="economy" data-testid="screen-economy" aria-labelledby="economy-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Yönetici · ekonomi</p>
+              <h1 class="screen-title" id="economy-title">Ekonomi</h1>
+              <p class="screen-sub">Credit satışı, öğretmen payı ve yerel AI maliyeti. Tüm tutarlar sent cinsinden tutulur, gösterimde yuvarlanır.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="success" id="econ-ledger-badge"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> Defter tutarlı</span>
+              <button class="btn btn-ghost btn-sm" type="button" id="btn-econ-refresh"><svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Yenile</button>
+            </div>
+          </header>
+
+          <div class="kpi-row">
+            <article class="kpi" data-testid="kpi-econ-sold">
+              <p class="kpi-label">Credit satışı</p>
+              <p class="kpi-value" id="econ-sold">$192,00</p>
+              <p class="kpi-delta" data-tone="muted" id="econ-sold-sub">24.000 cr · ort. $0,008</p>
+            </article>
+            <article class="kpi" data-testid="kpi-econ-share">
+              <p class="kpi-label">Öğretmen payı</p>
+              <p class="kpi-value" id="econ-share">$57,60</p>
+              <p class="kpi-delta" data-tone="info" id="econ-share-sub">%30 · 14 öğretmen</p>
+            </article>
+            <article class="kpi" data-testid="kpi-econ-net">
+              <p class="kpi-label">Platform net</p>
+              <p class="kpi-value" id="econ-net">$133,40</p>
+              <p class="kpi-delta" data-tone="success" id="econ-net-sub">AI maliyeti düşülmüş</p>
+            </article>
+            <article class="kpi" data-testid="kpi-econ-margin">
+              <p class="kpi-label">Marj</p>
+              <p class="kpi-value" id="econ-margin">%69</p>
+              <p class="kpi-delta" data-tone="success" id="econ-margin-sub">yerel AI sayesinde</p>
+            </article>
+          </div>
+
+          <div class="split">
+            <section class="card" data-testid="economy-chart-card" aria-labelledby="economy-chart-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="economy-chart-title">Satış ve pay dağılımı</h2>
+                  <p class="card-sub" id="econ-chart-sub">Son 6 ay · $ cinsinden</p>
+                </div>
+                <div class="legend">
+                  <span class="legend-item" data-series="a">Satış</span>
+                  <span class="legend-item" data-series="b">Öğretmen payı</span>
+                </div>
+              </div>
+              <div class="chart-box" id="econ-chart">
+                <svg viewBox="0 0 560 240" role="img" aria-label="Son altı ayın credit satışı ve öğretmen payı dağılımı">
+                  <line x1="24" y1="200" x2="540" y2="200"></line>
+                  <line x1="24" y1="150" x2="540" y2="150"></line>
+                  <line x1="24" y1="100" x2="540" y2="100"></line>
+                  <line x1="24" y1="50" x2="540" y2="50"></line>
+                  <rect x="38" y="168" width="26" height="32" rx="3" data-series="a"></rect>
+                  <rect x="68" y="184" width="26" height="16" rx="3" data-series="b"></rect>
+                  <rect x="122" y="156" width="26" height="44" rx="3" data-series="a"></rect>
+                  <rect x="152" y="180" width="26" height="20" rx="3" data-series="b"></rect>
+                  <rect x="206" y="146" width="26" height="54" rx="3" data-series="a"></rect>
+                  <rect x="236" y="176" width="26" height="24" rx="3" data-series="b"></rect>
+                  <rect x="290" y="128" width="26" height="72" rx="3" data-series="a"></rect>
+                  <rect x="320" y="168" width="26" height="32" rx="3" data-series="b"></rect>
+                  <rect x="374" y="88" width="26" height="112" rx="3" data-series="a"></rect>
+                  <rect x="404" y="152" width="26" height="48" rx="3" data-series="b"></rect>
+                  <rect x="458" y="60" width="26" height="140" rx="3" data-series="hot"></rect>
+                  <rect x="488" y="140" width="26" height="60" rx="3" data-series="b"></rect>
+                  <text x="471" y="48" text-anchor="middle">$192</text>
+                  <text x="66" y="218" text-anchor="middle">Haz</text>
+                  <text x="150" y="218" text-anchor="middle">Tem</text>
+                  <text x="234" y="218" text-anchor="middle">Ağu</text>
+                  <text x="318" y="218" text-anchor="middle">Eyl</text>
+                  <text x="402" y="218" text-anchor="middle">Eki</text>
+                  <text x="486" y="218" text-anchor="middle">Kas</text>
+                </svg>
+              </div>
+            </section>
+
+            <section class="card" data-testid="economy-breakdown" aria-labelledby="economy-breakdown-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="economy-breakdown-title">Kasım dökümü</h2>
+                  <p class="card-sub" id="econ-breakdown-sub">400 üretim · yerel AI</p>
+                </div>
+                <span class="pill" data-tone="success" id="econ-margin-badge">marj %69</span>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="econ-table">
+                  <caption>Kasım ayı ekonomi dökümü</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Kalem</th>
+                      <th scope="col" data-num>Tutar</th>
+                      <th scope="col">Not</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Credit satışı</td>
+                      <td data-num>$192,00</td>
+                      <td>24.000 cr</td>
+                    </tr>
+                    <tr>
+                      <td>Öğretmen payı</td>
+                      <td data-num>−$57,60</td>
+                      <td>%30 · 14 öğretmen</td>
+                    </tr>
+                    <tr>
+                      <td>Yerel AI maliyeti</td>
+                      <td data-num>−$1,00</td>
+                      <td>400 × $0,0024</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Platform net</strong></td>
+                      <td data-num><strong>$133,40</strong></td>
+                      <td>ödeme komisyonu hariç</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+
+          <section class="card" data-testid="economy-jobs" aria-labelledby="economy-jobs-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="economy-jobs-title">Son işler</h2>
+                <p class="card-sub" id="econ-jobs-sub">Kuyruk FIFO · eşzamanlılık 1</p>
+              </div>
+              <span class="pill" data-tone="warning" id="econ-jobs-badge">1 çalışıyor</span>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <caption>Son üretim işleri</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">İş</th>
+                    <th scope="col">Öğrenci</th>
+                    <th scope="col">Öğretmen</th>
+                    <th scope="col">Aşama</th>
+                    <th scope="col" data-num>Credit</th>
+                    <th scope="col">Durum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1048</td>
+                    <td>Elif Y.</td>
+                    <td>Dr. Selin Aksoy</td>
+                    <td>plan</td>
+                    <td data-num>72 cr</td>
+                    <td><span class="pill" data-tone="warning">çalışıyor</span></td>
+                  </tr>
+                  <tr>
+                    <td>1047</td>
+                    <td>Deniz A.</td>
+                    <td>Murat Demir</td>
+                    <td>deliver</td>
+                    <td data-num>58 cr</td>
+                    <td><span class="pill" data-tone="info">kısmi teslim</span></td>
+                  </tr>
+                  <tr>
+                    <td>1046</td>
+                    <td>Zeynep K.</td>
+                    <td>Ayşe Korkmaz</td>
+                    <td>compose</td>
+                    <td data-num>64 cr</td>
+                    <td><span class="pill" data-tone="success">tamamlandı</span></td>
+                  </tr>
+                  <tr>
+                    <td>1045</td>
+                    <td>Kerem S.</td>
+                    <td>Dr. Selin Aksoy</td>
+                    <td>analyze</td>
+                    <td data-num>36 cr</td>
+                    <td><span class="pill" data-tone="danger">iade edildi</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <!-- 9 · Yeni: AI Merkezi -->
+        <section class="screen" id="screen-ai" data-screen="ai" data-testid="screen-ai" aria-labelledby="ai-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Genel · yerel zekâ</p>
+              <h1 class="screen-title" id="ai-title">AI Merkezi</h1>
+              <p class="screen-sub">Donanımını gör, sana uygun model setini seç, indirmeleri izle. Hiçbir model kendiliğinden indirilmez.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="success"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> yalnız yerel</span>
+              <button class="btn btn-ghost" id="btn-ai-refresh" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Sistemi yenile
+              </button>
+            </div>
+          </header>
+
+          <section class="card advisor-card" data-testid="ai-advisor" aria-labelledby="ai-advisor-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-advisor-title">Model danışmanı</h2>
+                <p class="card-sub" id="ai-advisor-sub">Kartına uygun modeller: gerekçe, boyut, hız ve indirme kaynağıyla.</p>
+              </div>
+              <div class="row">
+                <select class="select" id="ai-advisor-vram" aria-label="Kart profili (VRAM)">
+                  <option value="auto" selected>Kartı otomatik oku</option>
+                  <option value="8">8 GB kart</option>
+                  <option value="12">12 GB kart</option>
+                  <option value="16">16 GB kart</option>
+                  <option value="24">24 GB kart</option>
+                  <option value="26">26 GB kart</option>
+                  <option value="32">32 GB kart</option>
+                  <option value="0">GPU yok (CPU)</option>
+                </select>
+                <span class="pill" data-tone="info" id="ai-advisor-budget">bütçe —</span>
+                <button class="btn btn-ghost" type="button" id="btn-ai-advisor-compare">Karşılaştır</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="segmented advisor-tabs" role="tablist" aria-label="Model türü" id="ai-advisor-kinds">
+                <button type="button" role="tab" aria-pressed="true" data-advisor-kind="llm">Dil</button>
+                <button type="button" role="tab" aria-pressed="false" data-advisor-kind="vision">Görüntü</button>
+                <button type="button" role="tab" aria-pressed="false" data-advisor-kind="stt">Konuşma</button>
+                <button type="button" role="tab" aria-pressed="false" data-advisor-kind="tts">Ses</button>
+              </div>
+              <p class="advisor-verdict" id="ai-advisor-verdict">Danışman yükleniyor…</p>
+              <div class="advisor-list" id="ai-advisor-list"></div>
+              <p class="field-hint" id="ai-advisor-note">—</p>
+            </div>
+          </section>
+
+          <section class="card setup-card" data-testid="ai-setup" aria-labelledby="ai-setup-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-setup-title">Tek tıkla hazırlık</h2>
+                <p class="card-sub" id="ai-setup-profile">Kartın için set hesaplanıyor…</p>
+              </div>
+              <span class="pill" data-tone="info" id="ai-setup-score">—</span>
+            </div>
+            <div class="card-body setup-body">
+              <div class="setup-budget">
+                <div class="setup-budget__row">
+                  <span class="setup-budget__label">VRAM bütçesi</span>
+                  <span class="setup-budget__value" id="ai-setup-budget">—</span>
+                </div>
+                <div class="setup-budget__track">
+                  <span class="setup-budget__fill" id="ai-setup-budget-fill"></span>
+                </div>
+                <p class="field-hint" id="ai-setup-residency">—</p>
+              </div>
+              <ul class="setup-prereq" id="ai-setup-prereq" aria-label="Ön koşullar"></ul>
+              <div class="setup-alt" id="ai-setup-alt" hidden>
+                <p class="field-hint" id="ai-setup-alt-note">—</p>
+                <button class="btn btn-ghost" type="button" id="btn-ai-setup-alt">Maks. kaliteyi kur</button>
+              </div>
+              <ul class="setup-steps" id="ai-setup-steps"></ul>
+              <progress class="progress" id="ai-setup-progress" max="100" value="0" aria-label="Kurulum ilerlemesi" hidden>%0</progress>
+              <div class="setup-foot">
+                <p class="setup-total" id="ai-setup-total">—</p>
+                <div class="row">
+                  <button class="btn btn-ghost" type="button" id="btn-ai-setup-cancel" hidden>İptal</button>
+                  <button class="btn btn-primary" type="button" id="btn-ai-setup-start">Sistemi kur</button>
+                </div>
+              </div>
+              <p class="field-hint" id="ai-setup-note">—</p>
+            </div>
+          </section>
+
+          <section class="card setup-card" data-testid="ai-storage" aria-labelledby="ai-storage-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-storage-title">Model depolama</h2>
+                <p class="card-sub" id="ai-storage-sub">Modellerin ineceği klasör · 20 GB’lık model C: diskini doldurmasın.</p>
+              </div>
+              <span class="pill" data-tone="info" id="ai-storage-free">—</span>
+            </div>
+            <div class="card-body setup-body">
+              <p class="setup-total" id="ai-storage-dir">—</p>
+              <p class="field-hint" id="ai-storage-hint">—</p>
+              <div class="setup-foot">
+                <p class="setup-total" id="ai-storage-default">—</p>
+                <div class="row">
+                  <button class="btn btn-ghost" type="button" id="btn-ai-storage-open">Klasörü aç</button>
+                  <button class="btn btn-ghost" type="button" id="btn-ai-storage-default">Varsayılana dön</button>
+                  <button class="btn btn-primary" type="button" id="btn-ai-storage-pick">Klasör seç</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card setup-card" data-testid="ai-runtime" aria-labelledby="ai-runtime-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-runtime-title">Yerel motor</h2>
+                <p class="card-sub" id="ai-runtime-profile">Ollama ve model belleği kontrol ediliyor…</p>
+              </div>
+              <span class="pill" data-tone="muted" id="ai-runtime-state">kontrol</span>
+            </div>
+            <div class="card-body setup-body">
+              <ul class="setup-prereq" id="ai-runtime-loaded" aria-label="Bellekteki modeller"></ul>
+              <p class="field-hint" id="ai-runtime-tuning">—</p>
+              <div class="setup-foot">
+                <p class="setup-total" id="ai-runtime-note">—</p>
+                <div class="row">
+                  <button class="btn btn-ghost" type="button" id="btn-ai-ollama-start">Ollama'yı başlat</button>
+                  <button class="btn btn-primary" type="button" id="btn-ai-warmup">Modelleri belleğe al</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card setup-card" data-testid="ai-selftest" aria-labelledby="ai-selftest-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-selftest-title">Sistemi dene</h2>
+                <p class="card-sub">Her yeteneği gerçekten çalıştırır; hiçbir şey indirmez.</p>
+              </div>
+              <span class="pill" data-tone="muted" id="ai-selftest-score">—</span>
+            </div>
+            <div class="card-body setup-body">
+              <ul class="setup-prereq" id="ai-selftest-list" aria-label="Yetenek testi sonuçları"></ul>
+              <div class="setup-foot">
+                <p class="setup-total" id="ai-selftest-note">Hazır olduğunda “Testi çalıştır”.</p>
+                <div class="row">
+                  <button class="btn btn-primary" type="button" id="btn-ai-selftest-run">Testi çalıştır</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="split">
+            <section class="card" data-testid="ai-hardware" aria-labelledby="ai-hardware-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="ai-hardware-title">Donanım</h2>
+                  <p class="card-sub">Son ölçüm · 12:04 · bi:ai:system</p>
+                </div>
+                <span class="pill" data-tone="success">uygun</span>
+              </div>
+              <div class="card-body">
+                <dl id="ai-system">
+                  <div class="dl-row"><dt>GPU</dt><dd id="ai-gpu">RTX 4070 Ti SUPER</dd></div>
+                  <div class="dl-row"><dt>VRAM</dt><dd id="ai-vram">16 GB · 256-bit</dd></div>
+                  <div class="dl-row"><dt>RAM</dt><dd id="ai-ram">32 GB</dd></div>
+                  <div class="dl-row"><dt>Boş disk</dt><dd id="ai-disk">412 GB</dd></div>
+                  <div class="dl-row"><dt>Ollama</dt><dd id="ai-ollama-state"><span class="pill" data-tone="success">çalışıyor · 0.4.2</span></dd></div>
+                  <div class="dl-row"><dt>Python</dt><dd id="ai-python">—</dd></div>
+                  <div class="dl-row"><dt>Sürücü</dt><dd>581.26</dd></div>
+                </dl>
+                <p class="field-hint">Katalog, 16 GB VRAM sınıfına göre küratörlüdür. Toplam tahmini VRAM 12,5 GB'ı aşarsa uyarı verilir.</p>
+              </div>
+            </section>
+
+            <section class="card" data-testid="ai-recommend" aria-labelledby="ai-recommend-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="ai-recommend-title">Önerilen set</h2>
+                  <p class="card-sub">Donanımına göre dengeli seçim</p>
+                </div>
+                <span class="pill" data-tone="info">dengeli</span>
+              </div>
+              <div class="card-body" id="ai-recommend-banner">
+                <div class="stack">
+                  <label class="field" for="ai-preset">
+                    <span class="card-sub">Hazır set</span>
+                    <select class="select" id="ai-preset">
+                      <option value="hizli">Hızlı — en düşük gecikme</option>
+                      <option value="dengeli" selected>Dengeli — varsayılan</option>
+                      <option value="kalite">Kalite — 16 GB sınırında</option>
+                    </select>
+                  </label>
+                  <div class="dl-row"><dt>LLM</dt><dd>Qwen2.5 14B (Q4)</dd></div>
+                  <div class="dl-row"><dt>Vision</dt><dd>Qwen3-VL 8B</dd></div>
+                  <div class="dl-row"><dt>STT</dt><dd>faster-whisper medium</dd></div>
+                  <div class="dl-row"><dt>TTS</dt><dd>Piper TR</dd></div>
+                  <div class="dl-row"><dt>Tahmini toplam VRAM</dt><dd>11,8 GB</dd></div>
+                  <p class="pill" data-tone="warning">12,5 GB sınırına yakın · 0,7 GB pay</p>
+                </div>
+                <button class="btn btn-primary btn-block" id="btn-ai-apply-preset" type="button">
+                  <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg> Seti uygula
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <section class="card" data-testid="ai-readiness" aria-labelledby="ai-readiness-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-readiness-title">Üretim hazırlığı</h2>
+                <p class="card-sub">Bir çözüm üretmek için gereken dört yetenek; kurulu modele göre canlı hesaplanır.</p>
+              </div>
+              <span class="pill" data-tone="info" id="ai-readiness-score">—</span>
+            </div>
+            <div class="card-body">
+              <div class="quality-list" id="ai-readiness-list"></div>
+              <p class="field-hint" id="ai-readiness-next">—</p>
+            </div>
+          </section>
+
+          <section class="card" data-testid="ai-catalog-card" aria-labelledby="ai-catalog-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-catalog-title">Model kataloğu</h2>
+                <p class="card-sub">LLM, vision, STT, TTS ve video · kurulum yalnız senin onayınla</p>
+              </div>
+              <span class="pill" data-tone="muted" id="ai-catalog-count">6 / 24 model</span>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <label class="field" for="ai-search">
+                  <span class="visually-hidden">Model ara</span>
+                  <input class="input" id="ai-search" type="search" placeholder="Model ara: qwen, whisper, piper…" aria-label="Model ara" autocomplete="off">
+                </label>
+                <label class="field" for="ai-kind-filter">
+                  <span class="visually-hidden">Model türü</span>
+                  <select class="select" id="ai-kind-filter" aria-label="Model türü">
+                    <option value="all" selected>Tüm türler</option>
+                    <option value="llm">LLM</option>
+                    <option value="vision">Vision</option>
+                    <option value="stt">STT</option>
+                    <option value="tts">TTS</option>
+                    <option value="avatar">Avatar</option>
+                    <option value="video">Video</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="card-grid" id="ai-catalog">
+                <article class="model-card" data-testid="model-card" data-model-id="qwen2.5:7b-instruct-q4_K_M" data-kind="llm" data-size-gb="4.7" data-vram-gb="5.2" data-fit="ok">
+                  <div class="row-between">
+                    <h3 class="card-title">Qwen2.5 7B (Q4)</h3>
+                    <span class="pill" data-tone="success">VRAM uygun</span>
+                  </div>
+                  <p class="card-sub">Dengeli; Türkçede iyi, hızlı yanıt. Günlük plan üretimi için yeterli.</p>
+                  <div class="model-meta"><span>4,7 GB</span><span>5,2 GB VRAM</span><span>Apache-2.0</span><span>ollama</span></div>
+                  <p class="model-stars" aria-label="Kalite 4 / 5">★★★★☆</p>
+                  <div class="row">
+                    <button class="btn btn-primary btn-sm" type="button" data-act="download"><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg> İndir</button>
+                    <button class="btn btn-ghost btn-sm" type="button" data-act="default">Varsayılan yap</button>
+                  </div>
+                </article>
+
+                <article class="model-card" data-testid="model-card" data-model-id="qwen2.5:14b-instruct-q4_K_M" data-kind="llm" data-size-gb="9.0" data-vram-gb="10.5" data-fit="tight">
+                  <div class="row-between">
+                    <h3 class="card-title">Qwen2.5 14B (Q4)</h3>
+                    <span class="pill" data-tone="warning">sınırda</span>
+                  </div>
+                  <p class="card-sub">Dengeli; Türkçede çok iyi, 14B kalitesi. Dengeli setin varsayılanı.</p>
+                  <div class="model-meta"><span>9,0 GB</span><span>10,5 GB VRAM</span><span>Apache-2.0</span><span>ollama</span></div>
+                  <p class="model-stars" aria-label="Kalite 5 / 5">★★★★★</p>
+                  <div class="row">
+                    <button class="btn btn-primary btn-sm" type="button" data-act="download"><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg> İndir</button>
+                    <button class="btn btn-ghost btn-sm" type="button" data-act="default">Varsayılan yap</button>
+                  </div>
+                </article>
+
+                <article class="model-card" data-testid="model-card" data-model-id="qwen3-vl:8b-instruct-q4_K_M" data-kind="vision" data-size-gb="6.2" data-vram-gb="6.4" data-fit="ok">
+                  <div class="row-between">
+                    <h3 class="card-title">Qwen3-VL 8B</h3>
+                    <span class="pill" data-tone="success">kurulu</span>
+                  </div>
+                  <p class="card-sub">Sayfa görseli analizi. Bugün kurulu olan tek üretim modeli.</p>
+                  <div class="model-meta"><span>6,2 GB</span><span>6,4 GB VRAM</span><span>Apache-2.0</span><span>ollama</span></div>
+                  <p class="model-stars" aria-label="Kalite 5 / 5">★★★★★</p>
+                  <div class="row">
+                    <button class="btn btn-ghost btn-sm" type="button" data-act="default" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Varsayılan</button>
+                    <button class="btn btn-danger btn-sm" type="button" data-act="remove"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg> Kaldır</button>
+                  </div>
+                </article>
+
+                <article class="model-card" data-testid="model-card" data-model-id="llama3.1:8b" data-kind="llm" data-size-gb="4.9" data-vram-gb="6.1" data-fit="ok">
+                  <div class="row-between">
+                    <h3 class="card-title">Llama 3.1 8B</h3>
+                    <span class="pill" data-tone="success">VRAM uygun</span>
+                  </div>
+                  <p class="card-sub">Genel amaçlı, güçlü akıl yürütme. Türkçede iyi.</p>
+                  <div class="model-meta"><span>4,9 GB</span><span>6,1 GB VRAM</span><span>Llama 3.1</span><span>ollama</span></div>
+                  <p class="model-stars" aria-label="Kalite 4 / 5">★★★★☆</p>
+                  <div class="row">
+                    <button class="btn btn-primary btn-sm" type="button" data-act="download"><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg> İndir</button>
+                  </div>
+                </article>
+
+                <article class="model-card" data-testid="model-card" data-model-id="llava:13b" data-kind="vision" data-size-gb="8.0" data-vram-gb="14.8" data-fit="over">
+                  <div class="row-between">
+                    <h3 class="card-title">LLaVA 13B</h3>
+                    <span class="pill" data-tone="danger">VRAM aşar</span>
+                  </div>
+                  <p class="card-sub">Büyük vision modeli; yüksek kalite ama bu kartta kalan bellek bırakmaz.</p>
+                  <div class="model-meta"><span>8,0 GB</span><span>14,8 GB VRAM</span><span>LLaMA</span><span>ollama</span></div>
+                  <p class="model-stars" aria-label="Kalite 4 / 5">★★★★☆</p>
+                  <p class="field-error">16 GB VRAM'i aşar; diğer modellerle aynı anda çalıştırılamaz.</p>
+                  <div class="row">
+                    <button class="btn btn-danger btn-sm" type="button" data-act="download"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg> Yine de indir</button>
+                    <button class="btn btn-ghost btn-sm" type="button" data-act="cancel">İptal</button>
+                  </div>
+                </article>
+
+                <article class="model-card" data-testid="model-card" data-model-id="faster-whisper-large-v3" data-kind="stt" data-size-gb="3.1" data-vram-gb="4.2" data-fit="ok">
+                  <div class="row-between">
+                    <h3 class="card-title">faster-whisper large-v3</h3>
+                    <span class="pill" data-tone="success">VRAM uygun</span>
+                  </div>
+                  <p class="card-sub">Türkçe transkriptte en yüksek doğruluk. Python çalışma zamanı gerekir.</p>
+                  <div class="model-meta"><span>3,1 GB</span><span>4,2 GB VRAM</span><span>MIT</span><span>pip</span></div>
+                  <p class="model-stars" aria-label="Kalite 5 / 5">★★★★★</p>
+                  <div class="row">
+                    <button class="btn btn-primary btn-sm" type="button" data-act="download"><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg> İndir</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <div class="grid-2">
+            <section class="card" data-testid="ai-installed-card" aria-labelledby="ai-installed-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="ai-installed-title">Kurulu modeller</h2>
+                  <p class="card-sub">Bu makinede hazır olanlar</p>
+                </div>
+                <span class="pill" data-tone="success" id="ai-installed-count">2 model</span>
+              </div>
+              <div class="card-body">
+                <div class="file-list" id="ai-installed">
+                  <div class="file-chip">
+                    <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-cpu"></use></svg></span>
+                    <span>qwen3-vl:8b-instruct-q4_K_M</span>
+                    <span class="card-sub">6,2 GB · vision</span>
+                    <span class="pill" data-tone="success">varsayılan</span>
+                    <button class="btn btn-icon btn-sm" type="button" aria-label="qwen3-vl modelini kaldır"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                  </div>
+                  <div class="file-chip">
+                    <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-cpu"></use></svg></span>
+                    <span>nomic-embed-text</span>
+                    <span class="card-sub">274 MB · embedding</span>
+                    <span class="pill" data-tone="muted">yardımcı</span>
+                    <button class="btn btn-icon btn-sm" type="button" aria-label="nomic-embed-text modelini kaldır"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="card" data-testid="ai-downloads-card" aria-labelledby="ai-downloads-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="ai-downloads-title">İndirmeler</h2>
+                  <p class="card-sub">Canlı ilerleme · hız · kalan süre</p>
+                </div>
+                <span class="pill" data-tone="info">1 etkin</span>
+              </div>
+              <div class="card-body">
+                <div class="file-list" id="ai-downloads">
+                  <div class="file-chip">
+                    <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-download"></use></svg></span>
+                    <div class="stack">
+                      <div class="row-between">
+                        <strong>qwen2.5:14b-instruct-q4_K_M</strong>
+                        <span class="pill" data-tone="info">%42</span>
+                      </div>
+                      <progress class="dl-bar" value="42" max="100" aria-label="qwen2.5 14B indirme ilerlemesi">%42</progress>
+                      <span class="card-sub">3,8 / 9,0 GB · 12,4 MB/s · 7 dk kaldı</span>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" type="button" data-act="cancel">
+                      <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg> İptal
+                    </button>
+                  </div>
+                </div>
+                <div class="empty" id="ai-downloads-empty" hidden>
+                  <span class="empty-icon"><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg></span>
+                  <p class="empty-title">Etkin indirme yok</p>
+                  <p class="empty-text">Katalogdan bir model seçtiğinde indirme burada canlı görünür.</p>
+                  <span class="empty-action pill" data-tone="muted">hiçbir model kendiliğinden indirilmez</span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section class="card" data-testid="ai-note-card" aria-labelledby="ai-note-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-note-title">Not</h2>
+                <p class="card-sub">İndirme politikası ve disk kullanımı</p>
+              </div>
+              <span class="pill" data-tone="muted">bilgilendirme</span>
+            </div>
+            <div class="card-body">
+              <p class="card-sub" id="ai-note">Hiçbir model kendiliğinden indirilmez; her indirme açık kullanıcı onayıyla başlar. İndirilen ağırlıklar kullanıcı verisi klasöründe tutulur, uygulama silindiğinde kaldırılabilir. Yerel modeller cihazdan çıkmaz; bulut yalnız Ayarlar'dan açılırsa devreye girer.</p>
+            </div>
+          </section>
+
+          <section class="card mobile-card" id="ai-mobile" data-testid="ai-mobile" aria-labelledby="ai-mobile-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="ai-mobile-title">Telefondan bağlan</h2>
+                <p class="card-sub">Aynı Wi-Fi · QR ile eşleşme · PC yerel model sunucusu kalır</p>
+              </div>
+              <span class="pill" id="ai-mobile-state" data-tone="muted">Kapalı</span>
+            </div>
+            <div class="card-body mobile-body">
+              <div class="mobile-grid">
+                <div class="mobile-qr-box" id="ai-mobile-qr" hidden></div>
+                <div class="mobile-info">
+                  <dl class="mobile-facts">
+                    <div class="mobile-fact">
+                      <dt>PC adresi</dt>
+                      <dd id="ai-mobile-ip">—</dd>
+                    </div>
+                    <div class="mobile-fact">
+                      <dt>Eşleştirme kodu</dt>
+                      <dd class="mobile-code" id="ai-mobile-code">· · · · · ·</dd>
+                    </div>
+                    <div class="mobile-fact">
+                      <dt>Adres</dt>
+                      <dd class="mobile-url" id="ai-mobile-url">Köprü kapalı</dd>
+                    </div>
+                  </dl>
+                  <div class="toolbar mobile-actions">
+                    <button class="btn btn-primary" id="btn-ai-mobile-start" type="button">
+                      <svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg> Köprüyü aç
+                    </button>
+                    <button class="btn btn-ghost" id="btn-ai-mobile-stop" type="button">Kapat</button>
+                    <button class="btn btn-ghost" id="btn-ai-mobile-rotate" type="button">
+                      <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Yeni kod
+                    </button>
+                    <button class="btn btn-ghost" id="btn-ai-mobile-copy" type="button">Bağlantıyı kopyala</button>
+                  </div>
+                  <p class="mobile-note" id="ai-mobile-note" data-tone="muted">Köprü yalnız sen başlattığında açılır ve pencere kapanınca kapanır.</p>
+                </div>
+              </div>
+              <div class="mobile-devices-head">
+                <h3 class="card-title">Bağlı cihazlar</h3>
+                <span class="pill" data-tone="muted"><span id="ai-mobile-count">0</span> cihaz</span>
+              </div>
+              <ul class="mobile-devices" id="ai-mobile-devices"></ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- 10 · Ayarlar / AI Bağlantıları -->
+        <section class="screen" id="screen-admin" data-screen="admin" data-testid="screen-admin" aria-labelledby="admin-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Yönetici · sistem</p>
+              <h1 class="screen-title" id="admin-title">Yönetim</h1>
+              <p class="screen-sub">Model kurulum durumu, canlı indirme, kalan süre ve depolama konumu tek ekranda. İşlemler yalnız senin onayınla başlar.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="muted" id="admin-set-note">set</span>
+              <button class="btn btn-primary btn-sm" type="button" id="btn-admin-install-set">Önerilenleri kur</button>
+              <span class="pill" data-tone="muted" id="admin-runtime-pill">motor</span>
+              <button class="btn btn-ghost btn-sm" type="button" id="btn-admin-refresh">
+                <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Yenile
+              </button>
+            </div>
+          </header>
+
+          <div class="kpi-row">
+            <article class="kpi" data-testid="kpi-admin-gpu">
+              <p class="kpi-label">Ekran kartı</p>
+              <p class="kpi-value" id="admin-gpu">—</p>
+              <p class="kpi-delta" data-tone="muted" id="admin-gpu-sub">VRAM okunuyor</p>
+            </article>
+            <article class="kpi" data-testid="kpi-admin-vram">
+              <p class="kpi-label">Bellekteki modeller</p>
+              <p class="kpi-value" id="admin-vram">—</p>
+              <p class="kpi-delta" data-tone="info" id="admin-vram-sub">yüklü model yok</p>
+            </article>
+            <article class="kpi" data-testid="kpi-admin-disk">
+              <p class="kpi-label">Model diski</p>
+              <p class="kpi-value" id="admin-disk">—</p>
+              <p class="kpi-delta" data-tone="muted" id="admin-disk-sub">—</p>
+            </article>
+            <article class="kpi" data-testid="kpi-admin-installed">
+              <p class="kpi-label">Kurulu model</p>
+              <p class="kpi-value" id="admin-installed">—</p>
+              <p class="kpi-delta" data-tone="success" id="admin-installed-sub">katalog</p>
+            </article>
+          </div>
+
+          <section class="card" data-testid="admin-models-card" aria-labelledby="admin-models-title">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="admin-models-title">Model durumu</h2>
+                <p class="card-sub" id="admin-models-sub">Katalogdaki her model: sığma, boyut, durum ve işlem.</p>
+              </div>
+              <div class="row">
+                <input class="input admin-search" type="search" id="admin-model-search" placeholder="Model ara · kimlik ya da ad" aria-label="Model ara" autocomplete="off">
+                <select class="select" id="admin-kind-filter" aria-label="Türe göre süz">
+                  <option value="all" selected>Tüm türler</option>
+                  <option value="llm">Dil</option>
+                  <option value="vision">Görüntü</option>
+                  <option value="stt">Konuşma</option>
+                  <option value="tts">Ses</option>
+                  <option value="video">Video</option>
+                  <option value="avatar">Avatar</option>
+                </select>
+                <label class="checkbox-row admin-only-missing" for="admin-only-missing">
+                  <input class="checkbox" type="checkbox" id="admin-only-missing">
+                  <span class="card-sub">Yalnız eksikler</span>
+                </label>
+                <span class="pill" data-tone="info" id="admin-models-count">—</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-wrap">
+                <table class="table admin-table" id="admin-models" aria-describedby="admin-models-sub">
+                  <thead>
+                    <tr>
+                      <th scope="col"><button class="admin-sort" type="button" data-sort="name">Model</button></th>
+                      <th scope="col"><button class="admin-sort" type="button" data-sort="kind">Tür</button></th>
+                      <th scope="col"><button class="admin-sort" type="button" data-sort="state">Durum</button></th>
+                      <th scope="col">İlerleme</th>
+                      <th scope="col">Kalan</th>
+                      <th scope="col"><button class="admin-sort" type="button" data-sort="vram">VRAM</button></th>
+                      <th scope="col">İşlem</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-models-body"></tbody>
+                </table>
+              </div>
+              <p class="field-hint" id="admin-models-note">—</p>
+            </div>
+          </section>
+
+          <div class="split">
+            <section class="card" data-testid="admin-jobs-card" aria-labelledby="admin-jobs-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="admin-jobs-title">Canlı indirmeler</h2>
+                  <p class="card-sub">Hız, ilerleme ve kalan süre saniyede bir tazelenir.</p>
+                </div>
+                <span class="pill" data-tone="warning" id="admin-jobs-count">0</span>
+              </div>
+              <div class="card-body">
+                <div class="stack" id="admin-jobs"></div>
+                <p class="field-hint" id="admin-jobs-empty">Aktif indirme yok.</p>
+              </div>
+            </section>
+
+            <section class="card" data-testid="admin-storage-card" aria-labelledby="admin-storage-title">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title" id="admin-storage-title">Depolama</h2>
+                  <p class="card-sub" id="admin-storage-sub">Modellerin ineceği klasör.</p>
+                </div>
+                <span class="pill" data-tone="info" id="admin-storage-free">—</span>
+              </div>
+              <div class="card-body stack">
+                <p class="admin-path" id="admin-storage-dir">—</p>
+                <p class="field-hint" id="admin-storage-hint">—</p>
+                <div class="divider"></div>
+                <div class="dl-row"><dt>Motor</dt><dd id="admin-runtime-note">—</dd></div>
+                <div class="dl-row"><dt>Ayar</dt><dd id="admin-tuning-note">—</dd></div>
+                <div class="row">
+                  <button class="btn btn-ghost" type="button" id="btn-admin-storage-open">Klasörü aç</button>
+                  <button class="btn btn-ghost" type="button" id="btn-admin-storage-default">Varsayılan</button>
+                  <button class="btn btn-primary" type="button" id="btn-admin-storage-pick">Klasör seç</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" id="screen-settings" data-screen="settings" data-testid="screen-settings" aria-labelledby="settings-title" hidden>
+          <header class="screen-head">
+            <div>
+              <p class="card-sub">Genel · sistem</p>
+              <h1 class="screen-title" id="settings-title">Ayarlar</h1>
+              <p class="screen-sub">AI bağlantıları, görünüm ve gizlilik. Bulut yalnız sen açarsan devreye girer; varsayılan yereldir.</p>
+            </div>
+            <div class="toolbar">
+              <span class="pill" data-tone="muted" id="app-version">v0.2.0 · yerel önizleme</span>
+            </div>
+          </header>
+
+          <div class="split">
+            <div class="stack">
+              <section class="card" data-testid="settings-ai-registry" aria-labelledby="settings-ai-registry-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="settings-ai-registry-title">AI bağlantıları</h2>
+                    <p class="card-sub" id="ai-registry-sub">Tek arayüz, çok sağlayıcı · canlı durum</p>
+                  </div>
+                  <div class="toolbar">
+                    <button class="btn btn-ghost btn-sm" id="btn-ai-probe" type="button">
+                      <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg> Sağlık testi
+                    </button>
+                    <button class="btn btn-primary btn-sm" id="btn-ai-install" type="button">
+                      <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                      <span id="btn-ai-install-label">Gerekli olanları indir</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="file-list" id="ai-registry-list">
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-bolt"></use></svg></span>
+                      <span>Ollama · LLM + Vision</span>
+                      <span class="card-sub">yerel · 127.0.0.1:11434</span>
+                      <span class="pill" data-tone="success">hazır · 24 ms</span>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-cpu"></use></svg></span>
+                      <span>OpenAI uyumlu · LLM + Vision</span>
+                      <span class="card-sub">uzak · isteğe bağlı</span>
+                      <span class="pill" data-tone="muted">yapılandırılmadı</span>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-mic"></use></svg></span>
+                      <span>Whisper · STT</span>
+                      <span class="card-sub">yerel · Python bağımlılığı</span>
+                      <span class="pill" data-tone="warning">model gerekli</span>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-volume"></use></svg></span>
+                      <span>Piper · TTS</span>
+                      <span class="card-sub">yerel · CPU dostu</span>
+                      <span class="pill" data-tone="warning">model gerekli</span>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-user"></use></svg></span>
+                      <span>Wav2Lip · Avatar</span>
+                      <span class="card-sub">yerel · dudak senkronu</span>
+                      <span class="pill" data-tone="warning">model gerekli</span>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-video"></use></svg></span>
+                      <span>ffmpeg · Video</span>
+                      <span class="card-sub">yerel · PATH'te aranır</span>
+                      <span class="pill" data-tone="danger">kurulu değil</span>
+                    </div>
+                    <div class="file-chip">
+                      <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-spark"></use></svg></span>
+                      <span>Slides · Video</span>
+                      <span class="card-sub">yerleşik · slayt + metin</span>
+                      <span class="pill" data-tone="success">hazır</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="card" data-testid="settings-ai-config" aria-labelledby="settings-ai-config-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="settings-ai-config-title">Sağlayıcı yapılandırması</h2>
+                    <p class="card-sub">Model seçimi aşama bazlıdır; değişiklik yeni işlerde geçerli olur.</p>
+                  </div>
+                </div>
+                <form class="card-body" id="ai-config-form">
+                  <label class="field" for="ai-endpoint">
+                    <span class="card-sub">Ollama adresi</span>
+                    <input class="input" id="ai-endpoint" name="endpoint" type="url" value="http://127.0.0.1:11434" spellcheck="false">
+                    <span class="field-hint">Yalnız yerel adres önerilir. Bulut için ayrı konektör açılır.</span>
+                  </label>
+                  <div class="grid-2">
+                    <label class="field" for="ai-model-llm">
+                      <span class="card-sub">LLM modeli · plan</span>
+                      <select class="select" id="ai-model-llm" name="llm">
+                        <option value="qwen2.5:7b-instruct" selected>qwen2.5:7b-instruct</option>
+                        <option value="llama3.1:8b">llama3.1:8b</option>
+                        <option value="mistral:7b">mistral:7b</option>
+                      </select>
+                      <span class="field-hint">Şu an kurulu değil · ollama pull gerekir</span>
+                    </label>
+                    <label class="field" for="ai-model-vision">
+                      <span class="card-sub">Vision modeli · analiz</span>
+                      <select class="select" id="ai-model-vision" name="vision">
+                        <option value="qwen3-vl:8b-instruct-q4_K_M" selected>qwen3-vl:8b-instruct-q4_K_M</option>
+                        <option value="qwen3-vl:8b">qwen3-vl:8b</option>
+                      </select>
+                      <span class="field-hint">Kurulu · 6,2 GB · hazır</span>
+                    </label>
+                  </div>
+                  <label class="checkbox-row" for="allow-cloud">
+                    <input class="checkbox" id="allow-cloud" type="checkbox">
+                    <div class="stack">
+                      <strong>Bulut konektörüne izin ver</strong>
+                      <span class="card-sub">Kapalıyken hiçbir görsel veya metin cihazdan çıkmaz.</span>
+                    </div>
+                  </label>
+                  <label class="field" for="cloud-budget">
+                    <span class="card-sub">Aylık bulut bütçe sınırı (USD)</span>
+                    <input class="input" id="cloud-budget" name="cloudBudget" type="number" min="0" step="1" value="0">
+                    <span class="field-hint">0 = sınırsız değil, bulut kapalı sayılır. Yerel modeller bütçe harcamaz.</span>
+                  </label>
+                </form>
+              </section>
+            </div>
+
+            <div class="stack">
+              <section class="card" data-testid="settings-appearance" aria-labelledby="settings-appearance-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="settings-appearance-title">Görünüm</h2>
+                    <p class="card-sub">Koyu varsayılan, açık isteğe bağlı.</p>
+                  </div>
+                  <span class="pill" data-tone="muted">token tabanlı</span>
+                </div>
+                <div class="card-body">
+                  <div class="row-between">
+                    <span class="card-sub">Tema</span>
+                    <div class="segmented" role="group" aria-label="Tema seçimi">
+                      <button class="segmented-item" type="button" data-theme-choice="dark" aria-pressed="true">Koyu</button>
+                      <button class="segmented-item" type="button" data-theme-choice="light" aria-pressed="false">Açık</button>
+                    </div>
+                  </div>
+                  <p class="field-hint">Üst çubuktaki tema düğmesi de aynı ayarı değiştirir.</p>
+                  <hr class="divider">
+                  <div class="grid-2">
+                    <label class="field" for="density-select">
+                      <span class="card-sub">Yoğunluk</span>
+                      <select class="select" id="density-select" name="density">
+                        <option value="comfortable" selected>Rahat</option>
+                        <option value="compact">Sıkı</option>
+                      </select>
+                    </label>
+                    <label class="field" for="language-select">
+                      <span class="card-sub">Dil</span>
+                      <select class="select" id="language-select" name="language">
+                        <option selected>Türkçe</option>
+                      </select>
+                    </label>
+                  </div>
+                  <hr class="divider">
+                  <label class="checkbox-row" for="motion-toggle">
+                    <input class="checkbox" id="motion-toggle" type="checkbox">
+                    <div class="stack">
+                      <strong>Hareketi azalt</strong>
+                      <span class="card-sub">Geçiş animasyonlarını kapatır; düşük hareket hassasiyeti için.</span>
+                    </div>
+                  </label>
+                </div>
+              </section>
+
+              <section class="card" data-testid="settings-privacy" aria-labelledby="settings-privacy-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="settings-privacy-title">Gizlilik</h2>
+                    <p class="card-sub">Öğrenci verisi en yüksek hassasiyet sınıfı.</p>
+                  </div>
+                  <span class="pill" data-tone="success"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg> yerel</span>
+                </div>
+                <div class="card-body">
+                  <div class="file-list">
+                    <div class="file-chip"><span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-check"></use></svg></span><span>Görseller userData/media altında kalır.</span></div>
+                    <div class="file-chip"><span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-check"></use></svg></span><span>Loglarda metin içeriği yazılmaz.</span></div>
+                    <div class="file-chip"><span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-alert"></use></svg></span><span>Bulut açılırsa arayüz açık uyarı gösterir.</span></div>
+                  </div>
+                </div>
+                <div class="card-foot">
+                  <div class="row">
+                    <button class="btn btn-ghost btn-sm" id="btn-open-data" type="button">
+                      <svg class="icon" aria-hidden="true"><use href="#i-folder"></use></svg> Veri klasörünü aç
+                    </button>
+                    <button class="btn btn-ghost btn-sm" id="btn-export-data" type="button">
+                      <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg> Arşivi dışa aktar
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="card" data-testid="settings-storage" aria-labelledby="settings-storage-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="settings-storage-title">Depolama</h2>
+                    <p class="card-sub">Veri ve medya klasörlerinin gerçek boyutu; her açılışta yerel ölçülür.</p>
+                  </div>
+                  <button class="btn btn-ghost btn-icon btn-sm" id="btn-refresh-storage" type="button" aria-label="Depolama bilgisini yenile">
+                    <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="grid-3">
+                    <div class="dl-row"><dt>Veri (JSON)</dt><dd id="storage-data">—</dd></div>
+                    <div class="dl-row"><dt>Medya</dt><dd id="storage-media">—</dd></div>
+                    <div class="dl-row"><dt>Kayıt</dt><dd id="storage-counts">—</dd></div>
+                  </div>
+                  <p class="field-hint" id="storage-paths">—</p>
+                </div>
+              </section>
+
+              <section class="card" data-testid="settings-about" aria-labelledby="settings-about-title">
+                <div class="card-head">
+                  <div>
+                    <h2 class="card-title" id="settings-about-title">Uygulama</h2>
+                    <p class="card-sub">BilgiAl · Windows masaüstü</p>
+                  </div>
+                  <span class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-spark"></use></svg></span>
+                </div>
+                <div class="card-body">
+                  <dl>
+                    <div class="dl-row"><dt>Sürüm</dt><dd>0.2.0</dd></div>
+                    <div class="dl-row"><dt>Şema</dt><dd>1</dd></div>
+                    <div class="dl-row"><dt>Electron</dt><dd>45.2.1</dd></div>
+                    <div class="dl-row"><dt>Veri</dt><dd>userData/data</dd></div>
+                  </dl>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-labelledby="palette-label" hidden>
+    <button class="palette__backdrop" type="button" data-close-palette aria-label="Komut paletini kapat"></button>
+    <div class="palette__panel">
+      <div class="palette__search">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+        <label class="visually-hidden" id="palette-label" for="palette-input">Komut ara</label>
+        <input class="palette__input" id="palette-input" type="text" placeholder="Ekran, işlem, ayar veya çözüm ara…" autocomplete="off" spellcheck="false">
+        <kbd class="kbd">Esc</kbd>
+      </div>
+      <ul class="palette__list" id="palette-list" role="listbox" aria-label="Komutlar">
+        <li class="palette__group" role="presentation">Ekranlar</li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="true" data-nav="workspace">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-grid"></use></svg></span>
+            <span class="palette-item__title">Çalışma Alanı</span>
+            <kbd class="kbd">1</kbd>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="tasks">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+            <span class="palette-item__title">Ödevlerim</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="library">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg></span>
+            <span class="palette-item__title">Kütüphane</span>
+            <kbd class="kbd">2</kbd>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="credits">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-coins"></use></svg></span>
+            <span class="palette-item__title">Credits</span>
+            <kbd class="kbd">3</kbd>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="studio">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-mic"></use></svg></span>
+            <span class="palette-item__title">Stüdyo</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="classes">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg></span>
+            <span class="palette-item__title">Sınıflar</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="earnings">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-trend"></use></svg></span>
+            <span class="palette-item__title">Kazanç</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="approval">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-badge"></use></svg></span>
+            <span class="palette-item__title">Onay Kuyruğu</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="economy">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-wallet"></use></svg></span>
+            <span class="palette-item__title">Ekonomi</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="admin">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-settings"></use></svg></span>
+            <span class="palette-item__title">Yönetim</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="ai">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-cpu"></use></svg></span>
+            <span class="palette-item__title">AI Merkezi</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="settings">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-settings"></use></svg></span>
+            <span class="palette-item__title">Ayarlar</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button class="palette-item" type="button" role="option" aria-selected="false" data-nav="auth">
+            <span class="palette-item__icon"><svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg></span>
+            <span class="palette-item__title">Giriş / Rol</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal-root" id="modal-root"></div>
+  <div class="toast-root" id="toast-root" aria-live="polite"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+name: Hata bildirimi
+description: Bir şey beklendiği gibi çalışmıyor
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Teşekkürler! Lütfen güvenlik açıkları için **herkese açık issue açmayın**;
+        [SECURITY.md](../blob/main/SECURITY.md) yolunu izleyin.
+  - type: textarea
+    id: what
+    attributes:
+      label: Ne oldu?
+      description: Beklenen ve gerçek davranışı yazın.
+      placeholder: "Ödevlerim'de 'Tamamla'ya bastım ama durum değişmedi."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Yeniden üretme adımları
+      placeholder: |
+        1. Öğrenci hesabıyla gir
+        2. Ödevlerim ekranını aç
+        3. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: how
+    attributes:
+      label: Nasıl çalıştırdınız?
+      options:
+        - Hazır ZIP (Baslat-Deneme.cmd)
+        - Kaynaktan (npm start)
+        - Derlenmiş paket (BilgiAl.exe)
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Ortam
+      description: Windows sürümü, Node, Ollama ve varsa GPU
+      placeholder: "Windows 11 24H2 · Node 22 · Ollama 0.40 · RTX 4070 Ti SUPER"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Günlük / ekran görüntüsü
+      description: `node tools/doctor.js` çıktısı ve varsa konsol hataları
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Kontroller
+      options:
+        - label: Bu bir güvenlik açığı değil
+          required: true
+        - label: Benzer bir issue olup olmadığını aradım
+          required: true

@@ -1,0 +1,17 @@
+{
+  "name": "bilgial",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BilgiAl - ogretmen tarzi sesli-gorsel cozum ureten Windows masaustu uygulamasi",
+  "main": "main/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test ../tests",
+    "lint": "node ../tools/lint.js",
+    "doctor": "node ../tools/doctor.js"
+  },
+  "devDependencies": {
+    "electron": "45.2.1"
+  }
+}

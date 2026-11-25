@@ -1,0 +1,28 @@
+name: Yapılandırma
+description: Kurulum, paketleme veya model indirme sorunları
+title: "[setup] "
+labels: ["question"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Ne kurmaya çalışıyorsunuz?
+      placeholder: "ZIP'i açtım, Baslat-Deneme.cmd çalışıyor ama video üretilmiyor."
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: doctor çıktısı
+      description: Depo kökünde `node tools/doctor.js` çıktısını yapıştırın
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: models
+    attributes:
+      label: Kurulu modeller
+      description: `ollama list` çıktısı ve Piper ses modelinin varlığı
+      render: shell
+    validations:
+      required: true

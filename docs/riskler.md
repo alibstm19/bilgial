@@ -1,0 +1,30 @@
+# BilgiAl — Risk Kaydı (v1)
+
+Sahip: LDR · Tarih: 2026-11-04 · Durum: yaşayan belge (her sürümde gözden geçirilir).
+Etki ve olasılık: **Y** = yüksek, **O** = orta, **D** = düşük. Azaltımlar v0.1 kapsamına göre yazıldı.
+
+| ID | Risk | Etki | Olasılık | Azaltım |
+|---|---|---|---|---|
+| R-01 | **Öğretmen sesi izinsiz klonlanması.** Yüklenen video/sesten `voiceProfile` çıkarılırken rıza alınmaması; sesin üçüncü kişilerce kullanılması. | Y (hukuk + itibar) | O | `consent.json` olmadan ses profili üretimi ve `verified` yasak; rıza metni sürümlü ve zaman damgalı; "sesimi sil" kalıcı silme (`voiceId` + referans dosyaları); klon yalnız yerel, dışarı çıkmaz. |
+| R-02 | **Reşit olmayan öğrenci verisinin işlenmesi.** Sayfa görselleri, soru metni ve kimlik bilgisi çocuk verisi olabilir. | Y (KVKK/hukuk) | Y | Varsayılan yerel depolama; bulut varsayılan kapalı ve açık uyarı; loglarda içerik yok (yalnız kimlik/aşama/süre); kayıt sırasında yaş/veli onayı alanı; silme hakkı; veri minimizasyonu. |
+| R-03 | **Kötü üretim öğretmen itibarına zarar verir.** Hatalı/alakasız çözüm öğretmenin anlatımıyla sunulur. | Y (itibar) | O | Öğrenci "işaretle" → otomatik iade (ekonomi §7.4); düşük güvenli analizde uyarı; öğretmen adına üretimde "AI destekli" etiketi; admin örneklem denetimi; yayın öncesi önizleme. |
+| R-04 | **GPU yetersizliği / tek GPU darboğazı.** 16 GB VRAM'de vision + LLM + TTS + avatar aynı anda çalışamaz; kuyruk uzar. | O | Y | Eşzamanlılık 1, FIFO kuyruk; aşamalar `pending-model` ile dürüstçe kısmi teslim; model boyutu sınırı; VRAM ölçümü ve `doctor` kontrolü; avatar v0.1 dışı. |
+| R-05 | **Credit ekonomisi açığı.** İade + pay + yeniden deneme kombinasyonuyla çift harcama/çift pay; negatif bakiye. | Y (finans) | O | Append-only defter; rezervasyon → settle/refund; `sum(ledger)==balance` testi; settle idempotent; iptalde pay geri alınır; bakiye negatife düşemez (rezervasyonda ret). |
+| R-06 | **Ödeme hukuku.** Gerçek para tahsilatı, mesafeli satış, vergi ve iade yükümlülükleri hazır değil. | Y (hukuk) | O | v0.1'de ödeme **simülasyon**; gerçek ödeme ancak ödeme kuruluşu + mesafeli satış sözleşmesi + vergi kaydı tamamlanınca; `credits:purchase` sunucu tarafı doğrulama gerektirir. |
+| R-07 | **Telif — yüklenen sayfa ders kitabı olabilir.** Kullanıcı telifli içerik yükler; üretilen çözüm türev eser sayılabilir. | Y (hukuk) | Y | Kullanım şartlarında "yalnız kendi materyalin" beyanı; içerik yüklerken telif uyarısı; üretim özel/yerel, kamusal paylaşım yok; şikâyet üzerine silme; ticari yeniden dağıtım yasak. |
+| R-08 | **Kota ve maliyet kontrolsüzlüğü.** Bulut konektörü açılırsa token/saniye maliyeti bütçeyi aşar. | O | O | `settings.ai.allowCloud` varsayılan false; `cloudBudgetMonthlyCents` sınırı; aşımda yeni iş reddi; yerel öncelik; iş başına maliyet kaydı. |
+| R-09 | **Dosya boyutu / kötü dosya.** 50 MB üstü, bozuk veya çok sayfalı yükleme; bellek şişmesi ve iş başarısızlığı. | O | O | `media.maxPages=10`, `media.maxUploadMb=50`; yükleme öncesi boyut/tür kontrolü; PDF→PNG dönüşümünde sayfa sınırı; başarısız işte tam iade. |
+| R-10 | **Tek makine ölçek sınırı.** Sunucu yok; eşzamanlı çok kullanıcı, yedekleme ve felaket kurtarma zayıf. | O | Y | v0.1 kapsamı tek makine olarak açıkça sınırlandı; atomik yazma + kilit; günlük yerel yedek; çok cihaz senkronu kapsam dışı; ölçek gerekirse mimari yeniden değerlendirilir. |
+| R-11 | **Model tedarik/lisans riski.** Ollama modelleri, XTTS/Wav2Lip/SadTalker ağırlıklarının lisansı ticari kullanıma uygun olmayabilir. | O | O | Her model için lisans kaydı (`docs/ai-mimari.md`); yalnız izinli lisanslı ağırlıklar; lisanssız model paketlenmez; alternatif açık model listesi tutulur. |
+| R-12 | **Sır ve hesap güvenliği.** Parola/anahtar sızıntısı, düz metin anahtar, zayıf parola hash'i. | Y (güvenlik) | D | `scrypt` + kullanıcı başına salt; `safeStorage` ile sırlar; `.env` commit yok; loglarda parola/token yok; oturum dosyası kullanıcıya özel izinlerle. |
+| R-13 | **VRAM taşması / model değişimi.** 14B + vision aynı anda 17,5 GB ister; 16 GB'da OOM ya da sürekli swap; ilk token gecikmesi ve iş gecikmesi. | Y (kararlılık) | Y | Katalogda `vramGb` tepe tahmini; `fitFor` + `recommendFor` (toplam > 12,5 GB uyarı); varsayılan `dengeli`; eşzamanlılık 1; `over` modelde indirme düğmesi uyarılı; kalite presetinde vision→LLM geçişi açıkça uyarılır. |
+| R-14 | **Model indirmesinin yarıda kalması.** Ağ kopması/iptal sonrası eksik ağırlık, bozuk `ollama` tag'i veya yarım pip kurulumu. | O | O | İndirme durumu `ai-installs.json` + `bi:event:download`; `state:'failed'` kaydı; yeniden deneme/idempotent kurulum; iptalde geçici dosya temizliği; "kurulu" yalnız doğrulama sonrası yazılır. |
+| R-15 | **Disk dolması.** 21 modelin toplamı + torch/venv + üretim medyası 466 GB diski tüketebilir; kurulum ortasında yer biterse bozuk kayıt. | O | O | `ai:system` ile `diskFreeGb`; indirme öncesi boyut kontrolü ve yetersizse ret; katalogda `sizeGb`; kullanıcıya toplam boyut gösterilir; kurulum öncesi boş alan eşiği (ör. 2× model boyutu). |
+| R-16 | **Lisans uyumsuzluğu.** Llama 3.1/3.2 Community License ticari kullanımda koşullu (700M MAU, atıf); XTTS v2 Coqui Public Model License ticari kullanıma kapalı; Wav2Lip araştırma amaçlı. | Y (hukuk) | O | Her katalog kaydında `license`; `lisans-dikkat` etiketi; ticari dağıtımda yalnız Apache-2.0/MIT model seti; lisans metni kurulum öncesi gösterilir; şüpheli model varsayılan yapılmaz; LDR onayı olmadan paketlenmez. |
+| R-17 | **Ses klonlama rızası (XTTS).** Öğretmen sesi referansıyla `voiceId` üretilirken rıza kaydı olmaması veya silme talebinin uygulanmaması (R-01'in yerel AI merkezi ayağı). | Y (hukuk + itibar) | O | `consent.json` olmadan XTTS çalıştırılmaz ve `verified` verilmez; rıza metni sürümlü/zaman damgalı; "sesimi sil" `voiceId` + referans dosyalarını kalıcı siler; klon çıktısı yerelde kalır. |
+
+## Açık kararlar (LDR onayı gerekir)
+
+- R-02 için veli onayı akışının v0.1'e alınıp alınmayacağı (şu an alan var, zorunluluk yok).
+- R-06 gerçek ödeme için hedef pazar/mevzuat (TR) ve ödeme kuruluşu seçimi.
+- R-11 ticari kullanımda hangi ses/avatar modellerinin lisanslı sayıldığı.

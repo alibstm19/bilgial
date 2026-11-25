@@ -1,0 +1,53 @@
+name: Özellik önerisi
+description: Bu fikri birlikte büyütelim
+title: "[idea] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        BilgiAl bir demo ve açık bir fikir. Hangi özelliğin gerçek sınıfta işe yaradığını
+        bilmek istiyoruz. Lütfen somut bir kullanım senaryosu anlatın.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Hangi sorun çözülüyor?
+      placeholder: "Kalabalık sınıfta öğretmen her öğrenciye ayrı dönüt yazmakta zaman kaybediyor."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Önerilen çözüm
+      description: Ekran, akış veya kural olarak düşüncenizi yazın.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Alan
+      options:
+        - Çözüm üretimi / video
+        - Sınıf ve ödev
+        - Telefon (PWA)
+        - Yerel AI / modeller
+        - Arayüz ve erişilebilirlik
+        - Kurulum ve paketleme
+        - Diğer
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Nasıl ölçeriz?
+      description: Bu özelliğin işe yaradığını hangi ölçüm gösterecek?
+      placeholder: "Öğretmenin dönüt yazma süresi 10 dakikadan 2 dakikaya iner."
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Proje kuralları
+      options:
+        - label: Yeni bir çalışma zamanı bağımlılığı gerektirmiyor
+          required: true
+        - label: Etik kapıları (rıza, gerçek ödeme yok) kaldırmıyor
+          required: true

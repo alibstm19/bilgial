@@ -1,0 +1,42 @@
+name: quality gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test + lint (windows)
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: install Electron (only dev dependency)
+        working-directory: src
+        run: npm install --no-audit --no-fund
+
+      - name: contract + unit + UI tests
+        run: node --test tests/
+
+      - name: style and contract lint
+        run: node tools/lint.js
+
+      - name: environment doctor (informational)
+        continue-on-error: true
+        run: node tools/doctor.js
+
+      - name: syntax check entry points
+        run: |
+          node --check src/main/main.js
+          node --check src/preload/preload.js
+          node --check src/shared/classes-model.js

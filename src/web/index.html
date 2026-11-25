@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0b0e">
+  <meta name="description" content="BilgiAl mobil istemcisi — aynı Wi-Fi'daki PC'ye bağlan, soru çöz, kütüphaneyi gör.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BilgiAl">
+  <title>BilgiAl</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+
+  <!-- Inline icon sprite: no remote assets, no inline styles. -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6"/><path d="M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6z"/><path d="M12 17v5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5-5-5 5-2-2-6 6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17 4 12"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 4v6h-6"/><path d="M3 20v-6h6"/><path d="M20.5 10A9 9 0 0 0 5 6.3L3 10"/><path d="M3.5 14A9 9 0 0 0 19 17.7l2-3.7"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-install" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M12 7v6"/><path d="m9.5 10.5 2.5 2.5 2.5-2.5"/><path d="M10.5 18h3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></symbol>
+  </svg>
+
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span class="brand-text">
+          <span class="brand-name">BilgiAl</span>
+          <span class="brand-host" id="header-host">eşlenmedi</span>
+        </span>
+      </div>
+      <div class="header-actions">
+        <span class="pill" id="conn-state" data-tone="muted" hidden>—</span>
+        <button class="btn btn-icon" id="btn-theme" type="button" aria-label="Açık temaya geç" aria-pressed="false" title="Tema değiştir">
+          <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"></use></svg>
+          <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"></use></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main" id="main" tabindex="-1">
+
+    <!-- 1 · Bağlan -->
+    <section class="screen" id="screen-connect" data-screen="connect" aria-labelledby="connect-title">
+      <header class="screen-head">
+        <p class="eyebrow">Mobil istemci</p>
+        <h1 class="screen-title" id="connect-title">BilgiAl'e bağlan</h1>
+        <p class="screen-sub">PC'de açık olan BilgiAl penceresindeki bağlantı adresini kullan. Aynı ağdaysan kod otomatik dolar.</p>
+      </header>
+
+      <section class="card" aria-labelledby="pair-title">
+        <div class="card-head">
+          <h2 class="card-title" id="pair-title">1 · Cihazı eşle</h2>
+          <span class="pill" id="pair-state" data-tone="muted">eşlenmedi</span>
+        </div>
+        <div class="card-body">
+          <p class="hint">
+            <svg class="icon" aria-hidden="true"><use href="#i-plug"></use></svg>
+            <span>PC ile aynı Wi-Fi'da olmalısın.</span>
+          </p>
+          <p class="host-line" id="pair-host">PC adı eşleşmeden görünmez.</p>
+
+          <form class="stack" id="pair-form" novalidate>
+            <label class="field" for="pair-code">
+              <span class="label">6 haneli kod</span>
+              <input class="input code-input" id="pair-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="000000" required>
+            </label>
+            <p class="field-error" id="pair-error" role="alert" hidden></p>
+            <button class="btn btn-primary btn-block" id="btn-pair" type="submit">Cihazı eşle</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="login-title">
+        <div class="card-head">
+          <h2 class="card-title" id="login-title">2 · Giriş yap</h2>
+          <span class="pill" id="login-lock" data-tone="muted">eşleşme bekliyor</span>
+        </div>
+        <div class="card-body">
+          <form class="stack" id="login-form" novalidate>
+            <label class="field" for="login-email">
+              <span class="label">E-posta</span>
+              <input class="input" id="login-email" name="email" type="email" autocomplete="username" placeholder="ornek@bilgial.com" required>
+            </label>
+            <label class="field" for="login-password">
+              <span class="label">Parola</span>
+              <input class="input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+            </label>
+            <p class="field-error" id="login-error" role="alert" hidden></p>
+            <button class="btn btn-primary btn-block" id="btn-login" type="submit">Giriş yap</button>
+          </form>
+          <p class="hint hint-quiet">Oturum bilgileri yalnızca bu telefonda saklanır.</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- 2 · Ana -->
+    <section class="screen" id="screen-home" data-screen="home" aria-labelledby="home-title" hidden>
+      <header class="screen-head">
+        <p class="eyebrow">Genel bakış</p>
+        <h1 class="screen-title" id="home-title">Merhaba</h1>
+        <p class="screen-sub" id="home-sub">PC'nin durumu ve son işlerin.</p>
+      </header>
+
+      <section class="card" aria-labelledby="home-user-title">
+        <div class="card-body user-row">
+          <span class="avatar" id="home-avatar" aria-hidden="true">?</span>
+          <div class="user-meta">
+            <h2 class="card-title" id="home-user-title"><span id="home-name">Kullanıcı</span></h2>
+            <p class="muted" id="home-email">—</p>
+          </div>
+          <button class="btn btn-ghost btn-sm" id="btn-logout" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-logout"></use></svg>
+            <span>Çıkış</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="start-title" id="start-card">
+        <div class="card-head">
+          <h2 class="card-title" id="start-title">İlk adımlar</h2>
+          <span class="pill" data-tone="info" id="start-count">0 / 4</span>
+        </div>
+        <div class="card-body stack">
+          <ol class="steps" id="start-steps"></ol>
+          <p class="hint" id="start-hint">Sırayla ilerle; her adım bitince işaretlenir.</p>
+          <button class="btn btn-primary" id="btn-start-next" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg>
+            <span>İlk sorunu yükle</span>
+          </button>
+        </div>
+      </section>
+
+      <div class="grid-2">
+        <section class="card kpi-card" aria-labelledby="credits-title">
+          <p class="eyebrow" id="credits-title">Kredi bakiyesi</p>
+          <p class="kpi-value" id="home-credits">—</p>
+          <p class="muted">credit</p>
+        </section>
+        <section class="card kpi-card" aria-labelledby="host-state-title">
+          <p class="eyebrow" id="host-state-title">PC durumu</p>
+          <p class="kpi-value" id="home-host-state">—</p>
+          <p class="muted" id="home-host-sub">bağlantı bekleniyor</p>
+        </section>
+      </div>
+
+      <section class="card" aria-labelledby="host-title">
+        <div class="card-head">
+          <h2 class="card-title" id="host-title">PC</h2>
+          <span class="pill" data-tone="info" id="host-version">—</span>
+        </div>
+        <div class="card-body">
+          <dl class="dl">
+            <div class="dl-row"><dt>Ekran kartı</dt><dd id="host-gpu">—</dd></div>
+            <div class="dl-row"><dt>VRAM</dt><dd id="host-vram">—</dd></div>
+            <div class="dl-row"><dt>Modeller</dt><dd id="host-models">—</dd></div>
+            <div class="dl-row"><dt>Çalışan</dt><dd id="host-running">—</dd></div>
+            <div class="dl-row"><dt>İndirilen</dt><dd id="host-downloading">—</dd></div>
+          </dl>
+          <p class="hint hint-quiet mono" id="host-modeldir">—</p>
+        </div>
+      </section>
+
+      <button class="btn btn-primary btn-block btn-lg" id="btn-new-solve" type="button">
+        <svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg>
+        <span>Yeni soru çöz</span>
+      </button>
+
+      <section class="card" aria-labelledby="notify-title">
+        <div class="card-head">
+          <h2 class="card-title" id="notify-title">Bildirimler</h2>
+          <span class="pill" data-tone="muted" id="notify-state">kapalı</span>
+        </div>
+        <div class="card-body stack">
+          <p class="hint" id="notify-hint">Çözüm bitince telefon bildirim göstersin; uygulama arka plandayken de haberin olur.</p>
+          <button class="btn btn-ghost" id="btn-notify" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-bell"></use></svg>
+            <span>Bildirimleri aç</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="install-title">
+        <div class="card-head">
+          <h2 class="card-title" id="install-title">Ana ekrana ekle</h2>
+          <span class="pill" data-tone="muted" id="install-state">kontrol ediliyor</span>
+        </div>
+        <div class="card-body stack">
+          <p class="hint" id="install-hint">BilgiAl’ı telefonuna uygulama gibi kur; Wi-Fi kopsa da arayüz açılır, çözümler PC dönünce gelir.</p>
+          <button class="btn btn-ghost" id="btn-install" type="button" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-install"></use></svg>
+            <span>Ana ekrana ekle</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="ai-title">
+        <div class="card-head">
+          <h2 class="card-title" id="ai-title">Yerel yapay zekâ</h2>
+          <span class="pill" data-tone="muted" id="ai-pill">beklemede</span>
+        </div>
+        <div class="card-body stack">
+          <div class="row wrap">
+            <button class="btn btn-ghost" id="btn-warmup" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg>
+              <span>Modelleri ısıt</span>
+            </button>
+            <button class="btn btn-ghost" id="btn-selftest" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+              <span>Yerel test</span>
+            </button>
+          </div>
+          <p class="hint" id="ai-status" role="status" aria-live="polite">Hazır olduğunda modelleri ısıtabilirsin.</p>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="home-jobs-title">
+        <div class="card-head">
+          <h2 class="card-title" id="home-jobs-title">Son işler</h2>
+          <button class="btn btn-icon btn-sm" id="btn-refresh-home" type="button" aria-label="Durumu yenile" title="Yenile">
+            <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="list" id="home-jobs"></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- 3 · Çöz -->
+    <section class="screen" id="screen-solve" data-screen="solve" aria-labelledby="solve-title" hidden>
+      <div id="solve-form-view">
+        <header class="screen-head">
+          <p class="eyebrow">Yeni üretim</p>
+          <h1 class="screen-title" id="solve-title">Yeni soru çöz</h1>
+          <p class="screen-sub">Sayfayı fotoğrafla, hocayı seç, maliyeti gör. Onaylamadan kredi harcanmaz.</p>
+        </header>
+
+        <form class="stack" id="solve-form" novalidate>
+          <section class="card" aria-labelledby="solve-teacher-title">
+            <div class="card-head">
+              <h2 class="card-title" id="solve-teacher-title">Anlatım tarzı</h2>
+              <span class="pill" data-tone="muted" id="teacher-count">—</span>
+            </div>
+            <div class="card-body">
+              <label class="field" for="solve-teacher">
+                <span class="label">Öğretmen</span>
+                <select class="select" id="solve-teacher" name="teacherId" required>
+                  <option value="">Yükleniyor…</option>
+                </select>
+              </label>
+              <p class="hint" id="teacher-hint" hidden></p>
+            </div>
+          </section>
+
+          <section class="card" aria-labelledby="solve-pages-title">
+            <div class="card-head">
+              <h2 class="card-title" id="solve-pages-title">Sayfalar</h2>
+              <span class="pill" data-tone="muted" id="page-count">0 / 3</span>
+            </div>
+            <div class="card-body stack">
+              <div class="row wrap">
+                <label class="btn btn-ghost file-btn" for="solve-capture">
+                  <svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>
+                  <span>Fotoğrafla</span>
+                </label>
+                <input class="visually-hidden" id="solve-capture" type="file" accept="image/*" capture="environment" multiple aria-label="Kamerayla sayfa fotoğrafı çek">
+                <label class="btn btn-ghost file-btn" for="solve-pick">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"></use></svg>
+                  <span>Galeriden seç</span>
+                </label>
+                <input class="visually-hidden" id="solve-pick" type="file" accept="image/*" multiple aria-label="Galeriden sayfa görseli seç">
+              </div>
+              <p class="hint hint-quiet">En fazla 3 sayfa. Görseller cihazdan yalnızca kendi PC'ne gider.</p>
+              <ul class="thumbs" id="solve-thumbs" aria-label="Seçilen sayfalar"></ul>
+              <p class="empty" id="thumbs-empty">Henüz sayfa eklenmedi.</p>
+            </div>
+          </section>
+
+          <section class="card" aria-labelledby="solve-detail-title">
+            <div class="card-head">
+              <h2 class="card-title" id="solve-detail-title">Ayrıntılar</h2>
+            </div>
+            <div class="card-body stack">
+              <label class="field" for="solve-note">
+                <span class="label">Not <span class="muted">(isteğe bağlı)</span></span>
+                <textarea class="textarea" id="solve-note" name="note" rows="3" maxlength="500" placeholder="Takıldığın adımı ya da hocaya notunu yaz."></textarea>
+              </label>
+              <div class="grid-2">
+                <label class="field" for="solve-complexity">
+                  <span class="label">Karmaşıklık</span>
+                  <select class="select" id="solve-complexity" name="complexity">
+                    <option value="kolay">Kolay</option>
+                    <option value="orta" selected>Orta</option>
+                    <option value="zor">Zor</option>
+                  </select>
+                </label>
+                <label class="field" for="solve-questions">
+                  <span class="label">Soru sayısı</span>
+                  <input class="input" id="solve-questions" name="questions" type="number" inputmode="numeric" min="1" max="50" step="1" value="1" required>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section class="card quote-card" aria-labelledby="quote-title">
+            <div class="card-head">
+              <h2 class="card-title" id="quote-title">Maliyet önizlemesi</h2>
+              <span class="pill" data-tone="muted" id="quote-pill">—</span>
+            </div>
+            <div class="card-body stack">
+              <div class="dl" id="quote-breakdown"></div>
+              <p class="quote-total" id="quote-total">—</p>
+              <p class="quote-status" id="quote-status" role="status" aria-live="polite">Sayfa ve soru sayısı seçilince hesaplanır.</p>
+              <p class="field-error" id="solve-error" role="alert" hidden></p>
+              <button class="btn btn-primary btn-block btn-lg" id="btn-solve" type="submit">
+                <svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg>
+                <span>Çözümü üret</span>
+              </button>
+            </div>
+          </section>
+        </form>
+      </div>
+
+      <div id="progress-view" hidden>
+        <header class="screen-head">
+          <p class="eyebrow">Üretim</p>
+          <h1 class="screen-title" id="progress-title">Çözüm hazırlanıyor</h1>
+          <p class="screen-sub" id="progress-sub">İş sıraya alındı.</p>
+        </header>
+
+        <section class="card" aria-labelledby="job-title">
+          <div class="card-head">
+            <h2 class="card-title mono" id="job-title">—</h2>
+            <span class="pill" data-tone="info" id="job-status">Sırada</span>
+          </div>
+          <div class="card-body stack">
+            <div class="progress-meta">
+              <span class="muted">Genel ilerleme</span>
+              <strong id="job-percent">%0</strong>
+            </div>
+            <progress class="progress" id="job-progress" max="100" value="0" aria-label="Genel ilerleme">%0</progress>
+            <ol class="stages" id="job-stages" aria-label="Aşamalar"></ol>
+            <button class="btn btn-ghost btn-block" id="btn-cancel-job" type="button" hidden>
+              <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+              <span>İşi iptal et</span>
+            </button>
+            <p class="hint" id="cancel-hint" hidden>İptal edersen kuyruktaki işin kredisi geri yüklenir.</p>
+            <p class="field-error" id="job-error" role="alert" hidden></p>
+            <div class="output" id="job-output" hidden>
+              <h3 class="card-title">Sonuç</h3>
+              <p id="job-summary"></p>
+              <div class="output-preview" id="job-preview" hidden></div>
+              <a class="btn btn-ghost" id="job-media" href="#" target="_blank" rel="noopener noreferrer" hidden>
+                <svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>
+                <span>Çözümü aç</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <button class="btn btn-ghost btn-block" id="btn-back-solve" type="button">Yeni bir soruya geç</button>
+      </div>
+    </section>
+
+    <!-- 4 · Kitaplık -->
+    <section class="screen" id="screen-library" data-screen="library" aria-labelledby="library-title" hidden>
+      <header class="screen-head">
+        <p class="eyebrow">Arşiv</p>
+        <h1 class="screen-title" id="library-title">Kitaplık</h1>
+        <p class="screen-sub">Ürettiğin çözümler ve son işlerin. Bir başlığa dokunarak ayrıntıyı aç.</p>
+      </header>
+
+      <section class="card" aria-labelledby="library-list-title">
+        <div class="card-head">
+          <h2 class="card-title" id="library-list-title">Çözümler</h2>
+          <div class="row">
+            <span class="pill" data-tone="muted" id="library-count">0</span>
+            <button class="btn btn-icon btn-sm" id="btn-refresh-library" type="button" aria-label="Kitaplığı yenile" title="Yenile">
+              <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="list" id="library-list"></div>
+        </div>
+        <div class="card-body stack" id="library-filters">
+          <label class="field">
+            <span class="label">Ara</span>
+            <input class="input" id="library-query" type="search" placeholder="Başlık ya da ders" autocomplete="off">
+          </label>
+          <div class="row wrap" id="library-subjects" role="group" aria-label="Ders filtresi"></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="library-jobs-title">
+        <div class="card-head">
+          <h2 class="card-title" id="library-jobs-title">Son işler</h2>
+          <span class="pill" data-tone="muted" id="library-jobs-count">0</span>
+        </div>
+        <div class="card-body">
+          <div class="list" id="library-jobs"></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- 5 · Ödevlerim (D-052) -->
+    <section class="screen" id="screen-tasks" data-screen="tasks" aria-labelledby="tasks-title" hidden>
+      <header class="screen-head">
+        <p class="eyebrow">Sınıf</p>
+        <h1 class="screen-title" id="tasks-title">Ödevlerim</h1>
+        <p class="screen-sub">Öğretmenin verdiği ödevler, teslim tarihleri ve dönütleri. Tamamladığını işaretle; PC'de anında görünür.</p>
+      </header>
+
+      <section class="card tasks-hero" aria-labelledby="tasks-goal-title">
+        <div class="card-head">
+          <h2 class="card-title" id="tasks-goal-title">Bugünün hedefi</h2>
+          <span class="pill" data-tone="muted" id="tasks-goal-pill">—</span>
+        </div>
+        <div class="card-body stack">
+          <p class="muted" id="tasks-goal-sub">Hedef yükleniyor…</p>
+          <progress class="progress" id="tasks-goal-progress" max="100" value="0" aria-label="Günlük hedef ilerlemesi">%0</progress>
+        </div>
+      </section>
+
+      <section class="card tasks-hero" id="tasks-upcoming-card" aria-labelledby="tasks-upcoming-title" hidden>
+        <div class="card-head">
+          <h2 class="card-title" id="tasks-upcoming-title">Yaklaşan teslimler</h2>
+          <span class="pill" data-tone="warning" id="tasks-upcoming-pill">0</span>
+        </div>
+        <div class="card-body stack">
+          <p class="muted" id="tasks-upcoming-sub">48 saat içinde teslim edilecek ödev yok</p>
+          <ul class="upcoming-list" id="tasks-upcoming"></ul>
+        </div>
+      </section>
+
+      <section class="card tasks-hero" aria-labelledby="tasks-digest-title">
+
+        <div class="card-head">
+          <h2 class="card-title" id="tasks-digest-title">Haftalık özetim</h2>
+          <button class="btn btn-ghost btn-sm" id="btn-copy-digest" type="button">Kopyala</button>
+        </div>
+        <div class="card-body stack">
+          <pre class="digest-text" id="tasks-digest">—</pre>
+        </div>
+      </section>
+
+      <div class="grid-2">
+        <section class="card kpi-card" aria-labelledby="tasks-pending-title">
+          <p class="eyebrow" id="tasks-pending-title">Bekleyen</p>
+          <p class="kpi-value" id="tasks-pending">—</p>
+          <p class="muted">ödev</p>
+        </section>
+        <section class="card kpi-card" aria-labelledby="tasks-done-title">
+          <p class="eyebrow" id="tasks-done-title">Tamamlanan</p>
+          <p class="kpi-value" id="tasks-done">—</p>
+          <p class="muted" id="tasks-progress">%0</p>
+        </section>
+        <section class="card kpi-card" aria-labelledby="tasks-streak-title">
+          <p class="eyebrow" id="tasks-streak-title">Seri</p>
+          <p class="kpi-value" id="tasks-streak">—</p>
+          <p class="muted">gün</p>
+        </section>
+      </div>
+
+      <section class="card" aria-labelledby="tasks-list-title">
+        <div class="card-head">
+          <h2 class="card-title" id="tasks-list-title">Ödevler</h2>
+          <button class="btn btn-icon btn-sm" id="btn-refresh-tasks" type="button" aria-label="Ödevleri yenile" title="Yenile">
+            <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="tasks-tools">
+            <label class="field" for="tasks-search">
+              <span class="visually-hidden">Ödev ara</span>
+              <input class="input" id="tasks-search" type="search" placeholder="Ödev ara" autocomplete="off">
+            </label>
+            <label class="field" for="tasks-state">
+              <span class="visually-hidden">Duruma göre süz</span>
+              <select class="select" id="tasks-state">
+                <option value="">Tüm durumlar</option>
+                <option value="assigned">Atanmış</option>
+                <option value="watching">İzleniyor</option>
+                <option value="overdue">Gecikmiş</option>
+                <option value="done">Tamamlandı</option>
+              </select>
+            </label>
+          </div>
+          <p class="muted tasks-tools__note" id="tasks-tools-note" hidden></p>
+          <div class="list tasks-list" id="tasks-list"></div>
+          <p class="empty tasks-empty" id="tasks-empty" hidden>Henüz ödev yok.</p>
+          <p class="field-error" id="tasks-error" role="alert" hidden></p>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="tasks-join-title">
+        <div class="card-head">
+          <h2 class="card-title" id="tasks-join-title">Sınıfa katıl</h2>
+        </div>
+        <div class="card-body stack">
+          <form class="stack" id="tasks-join-form" novalidate>
+            <label class="field" for="tasks-join-code">
+              <span class="label">6 karakterlik katılım kodu</span>
+              <input class="input code-input" id="tasks-join-code" name="code" type="text" autocomplete="off" maxlength="6" placeholder="ABC234" required>
+            </label>
+            <button class="btn btn-ghost btn-block" id="btn-tasks-join" type="submit">Kodu doğrula</button>
+          </form>
+          <p class="hint hint-quiet" id="tasks-join-hint">Sınıfa katılma masaüstünden yapılır; kodu oradan al ve PC'de “Sınıflar” ekranında kullan.</p>
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+  <nav class="tabbar" aria-label="Ana gezinme">
+    <button class="tabbar-btn" type="button" data-tab="connect" aria-current="page">
+      <svg class="icon" aria-hidden="true"><use href="#i-plug"></use></svg>
+      <span>Bağlan</span>
+    </button>
+    <button class="tabbar-btn" type="button" data-tab="home" disabled>
+      <svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg>
+      <span>Ana</span>
+    </button>
+    <button class="tabbar-btn" type="button" data-tab="solve" disabled>
+      <svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg>
+      <span>Çöz</span>
+    </button>
+    <button class="tabbar-btn" type="button" data-tab="library" disabled>
+      <svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg>
+      <span>Kitaplık</span>
+    </button>
+    <button class="tabbar-btn" type="button" data-tab="tasks" disabled>
+      <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+      <span>Ödevlerim</span>
+    </button>
+  </nav>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <noscript>
+    <div class="toast" data-tone="error">Bu istemci JavaScript gerektirir.</div>
+  </noscript>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

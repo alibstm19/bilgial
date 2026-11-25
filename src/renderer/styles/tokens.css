@@ -1,0 +1,157 @@
+/* BilgiAl · tasarım tokenları v2
+   Bağlayıcı kaynak: docs/design-v2-spec.md §1.
+   Tek kural: HAM RENK YALNIZCA BU DOSYADA. Diğer dosyalar var(--bi-*) tüketir.
+   Token adları spec'teki TAM liste ile birebir; yeni token eklenmez. */
+
+:root {
+  color-scheme: dark;
+
+  /* ── Yüzeyler ─────────────────────────────────────────────────── */
+  --bi-bg: #0a0b0e;
+  --bi-bg-1: #111317;
+  --bi-bg-2: #171a1f;
+  --bi-bg-3: #1e222a;
+  --bi-bg-hover: #1d2128;
+  --bi-bg-active: #232830;
+  --bi-overlay: rgba(4, 5, 8, 0.66);
+
+  /* ── Metin ────────────────────────────────────────────────────── */
+  --bi-fg: #eceef2;
+  --bi-fg-2: #a3abb8;
+  --bi-fg-3: #7c8595;
+  --bi-fg-inverse: #0a0b0e;
+
+  /* ── Kenarlar ─────────────────────────────────────────────────── */
+  --bi-border: #262b34;
+  --bi-border-strong: #353c48;
+  --bi-border-focus: #8b82ff;
+
+  /* ── Vurgu ────────────────────────────────────────────────────── */
+  --bi-accent: #6d5efc;
+  --bi-accent-hover: #7f72ff;
+  --bi-accent-soft: rgba(109, 94, 252, 0.16);
+  --bi-accent-fg: #ffffff;
+  --bi-accent-2: #f2a33c;
+  --bi-accent-2-soft: rgba(242, 163, 60, 0.14);
+
+  /* ── Anlam renkleri ───────────────────────────────────────────── */
+  --bi-success: #34d399;
+  --bi-success-soft: rgba(52, 211, 153, 0.14);
+  --bi-warning: #fbbf24;
+  --bi-warning-soft: rgba(251, 191, 36, 0.14);
+  --bi-danger: #f87171;
+  --bi-danger-soft: rgba(248, 113, 113, 0.14);
+  --bi-info: #60a5fa;
+  --bi-info-soft: rgba(96, 165, 250, 0.14);
+
+  /* ── Kabuk yüzeyleri ──────────────────────────────────────────── */
+  --bi-rail-bg: #08090c;
+  --bi-sidebar-bg: #0d0f13;
+  --bi-topbar-bg: #0c0e12;
+
+  /* ── Tipografi ────────────────────────────────────────────────── */
+  --bi-font-display: "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --bi-font-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --bi-font-mono: "Cascadia Code", "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --bi-fs-11: 11px;
+  --bi-fs-12: 12px;
+  --bi-fs-13: 13px;
+  --bi-fs-14: 14px;
+  --bi-fs-16: 16px;
+  --bi-fs-20: 20px;
+  --bi-fs-26: 26px;
+  --bi-fs-34: 34px;
+
+  --bi-fw-regular: 400;
+  --bi-fw-medium: 500;
+  --bi-fw-semibold: 600;
+  --bi-fw-bold: 700;
+
+  --bi-lh-tight: 1.2;
+  --bi-lh-normal: 1.55;
+
+  /* ── Boşluk · 8px taban (4px mikro) ───────────────────────────── */
+  --bi-s1: 4px;
+  --bi-s2: 8px;
+  --bi-s3: 12px;
+  --bi-s4: 16px;
+  --bi-s5: 24px;
+  --bi-s6: 32px;
+  --bi-s7: 48px;
+  --bi-s8: 64px;
+
+  /* ── Geometri ─────────────────────────────────────────────────── */
+  --bi-r-sm: 6px;
+  --bi-r-md: 10px;
+  --bi-r-lg: 14px;
+  --bi-r-pill: 999px;
+
+  --bi-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.34), 0 8px 24px -18px rgba(0, 0, 0, 0.55);
+  --bi-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.4), 0 28px 70px -32px rgba(0, 0, 0, 0.72);
+
+  --bi-rail-w: 60px;
+  --bi-sidebar-w: 236px;
+  --bi-topbar-h: 52px;
+  --bi-content-max: 1280px;
+
+  /* ── Hareket ──────────────────────────────────────────────────── */
+  --bi-dur-fast: 120ms;
+  --bi-dur: 180ms;
+  --bi-ease: cubic-bezier(0.2, 0.65, 0.25, 1);
+}
+
+/* ── Açık tema ──────────────────────────────────────────────────── */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bi-bg: #f7f8fa;
+  --bi-bg-1: #ffffff;
+  --bi-bg-2: #f1f3f7;
+  --bi-bg-3: #e8ecf3;
+  --bi-bg-hover: #eef1f6;
+  --bi-bg-active: #e3e8f1;
+  --bi-overlay: rgba(16, 18, 24, 0.32);
+
+  --bi-fg: #14161a;
+  --bi-fg-2: #4b5361;
+  --bi-fg-3: #646d7c;
+  --bi-fg-inverse: #ffffff;
+
+  --bi-border: #e2e6ee;
+  --bi-border-strong: #c8cfdb;
+  --bi-border-focus: #5b4bf0;
+
+  --bi-accent: #5b4bf0;
+  --bi-accent-hover: #4c3ce0;
+  --bi-accent-soft: rgba(91, 75, 240, 0.1);
+  --bi-accent-fg: #ffffff;
+  --bi-accent-2: #b45309;
+  --bi-accent-2-soft: rgba(180, 83, 9, 0.1);
+
+  --bi-success: #0f7a52;
+  --bi-success-soft: rgba(15, 122, 82, 0.1);
+  --bi-warning: #92610a;
+  --bi-warning-soft: rgba(146, 97, 10, 0.1);
+  --bi-danger: #c02b2b;
+  --bi-danger-soft: rgba(192, 43, 43, 0.09);
+  --bi-info: #1f62b8;
+  --bi-info-soft: rgba(31, 98, 184, 0.09);
+
+  --bi-rail-bg: #eef1f5;
+  --bi-sidebar-bg: #f2f4f8;
+  --bi-topbar-bg: #fafbfc;
+
+  --bi-shadow-1: 0 1px 2px rgba(20, 22, 28, 0.06), 0 8px 24px -18px rgba(20, 22, 28, 0.2);
+  --bi-shadow-2: 0 2px 8px rgba(20, 22, 28, 0.08), 0 28px 70px -32px rgba(20, 22, 28, 0.28);
+}
+
+/* ── Yoğunluk · veri ekranları ──────────────────────────────────── */
+[data-density="compact"] {
+  --bi-s3: 8px;
+  --bi-s4: 12px;
+  --bi-s5: 16px;
+  --bi-s6: 24px;
+  --bi-s7: 32px;
+  --bi-s8: 48px;
+}

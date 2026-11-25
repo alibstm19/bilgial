@@ -1,0 +1,41 @@
+# dependencies and build output
+node_modules/
+src/node_modules/
+dist/
+work/
+build/
+out/
+
+# local data, models and media produced by running the app
+data/
+media/
+models/
+*.onnx
+*.wav
+*.mp4
+*.pdf
+*.log
+
+# release artifacts (published through GitHub Releases, not git)
+*.zip
+
+# secrets and local config
+.env
+.env.*
+!.env.example
+*.kvpair
+settings.json
+*.json.bak
+
+# editor / OS noise
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# tooling caches
+.openchamber/
+.cache/
+*.pid
